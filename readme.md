@@ -5,7 +5,7 @@ It comes with some HTML files coming from Wikipedia or the public domain.
 # Usage
 
 * **input**  Input folder (default: "input")
-* **extensions* Regexp matching files to be added to the list(default: ".*\\.html")
+* **extensions** Regexp matching files to be added to the list(default: ".*\\.html")
 * **length** Number of related files to be displayed (default: 5)
 
 # Dependancies
