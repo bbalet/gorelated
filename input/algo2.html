@@ -1,0 +1,1706 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" /><title>Lempel–Ziv–Markov chain algorithm - Wikipedia, the free encyclopedia</title>
+<meta name="generator" content="MediaWiki 1.23wmf7" />
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit" />
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit" />
+<link rel="apple-touch-icon" href="//bits.wikimedia.org/apple-touch/wikipedia.png" />
+<link rel="shortcut icon" href="//bits.wikimedia.org/favicon/wikipedia.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd" />
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="canonical" href="http://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cteahouse%7Cext.rtlcite%2Cwikihiero%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmw.PopUpMediaTransform%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */</style>
+
+<script src="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Lempel–Ziv–Markov_chain_algorithm","wgTitle":"Lempel–Ziv–Markov chain algorithm","wgCurRevisionId":582788436,"wgRevisionId":582788436,"wgArticleId":359380,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles needing additional references from July 2010","All articles needing additional references","All articles with unsourced statements","Articles with unsourced statements from June 2013","Articles that may contain original research from April 2012","All articles that may contain original research","Lossless compression algorithms"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Lempel–Ziv–Markov_chain_algorithm","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgArticleFeedbackv5Permissions":{"aft-reader":true,"aft-member":false,"aft-editor":false,"aft-monitor":false,"aft-administrator":false,"aft-oversighter":false,"aft-noone":false},"wgBetaFeaturesFeatures":[],"wgVisualEditor":{"isPageWatched":false,"magnifyClipIconURL":"//bits.wikimedia.org/static-1.23wmf7/skins/common/images/magnify-clip.png","pageLanguageCode":"en","pageLanguageDir":"ltr"},"wikilove-recipient":"","wikilove-anon":0,"wgGuidedTourHelpGuiderUrl":"Help:Guided tours/guider","wgULSAcceptLanguageList":["en-us","en","zh-tw"],"wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","Geo":{"city":"","country":""},"wgNoticeProject":"wikipedia","aftv5Article":{"id":359380,"title":"Lempel–Ziv–Markov chain algorithm","namespace":0,"categories":["All articles needing additional references","All articles that may contain original research","All articles with unsourced statements","Articles needing additional references from July 2010","Articles that may contain original research from April 2012","Articles with unsourced statements from June 2013","Lossless compression algorithms"],"permissionLevel":false},"wgWikibaseItemId":"Q2733"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":0,"minordefault":0,"newpageshidepatrolled":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,
+"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"aftv5-last-filter":null,"visualeditor-enable":0,"visualeditor-enable-experimental":0,"visualeditor-enable-mwmath":0,"visualeditor-betatempdisable":0,"wikilove-enabled":1,"echo-subscriptions-web-page-review":true,"echo-subscriptions-email-page-review":false,"ep_showtoplink":false,"ep_bulkdelorgs":false,"ep_bulkdelcourses":true,"ep_showdyk":true,"echo-notify-show-link":true,"echo-show-alert":true,"echo-email-frequency":0,"echo-email-format":"html","echo-subscriptions-email-system":true,"echo-subscriptions-web-system":true,"echo-subscriptions-email-other":false,"echo-subscriptions-web-other":true,"echo-subscriptions-email-edit-user-talk":false,"echo-subscriptions-web-edit-user-talk":true,
+"echo-subscriptions-email-reverted":false,"echo-subscriptions-web-reverted":true,"echo-subscriptions-email-article-linked":false,"echo-subscriptions-web-article-linked":false,"echo-subscriptions-email-mention":false,"echo-subscriptions-web-mention":true,"echo-subscriptions-web-edit-thank":true,"echo-subscriptions-email-edit-thank":false,"gettingstarted-task-toolbar-show-intro":true,"uls-preferences":"","language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs108":false,"searchNs109":false,"searchNs118":false,"searchNs119":false
+,"searchNs446":false,"searchNs447":false,"searchNs710":false,"searchNs711":false,"searchNs828":false,"searchNs829":false,"gadget-teahouse":1,"gadget-ReferenceTooltips":1,"gadget-DRN-wizard":1,"gadget-charinsert":1,"gadget-mySandbox":1,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:087d2df5a674019c6b89dcf147ec9ae8 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","ext.visualEditor.viewPageTarget.init","ext.wikimediaShopLink.core","ext.uls.init","ext.uls.interface","wikibase.client.init","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script>
+<script src="//bits.wikimedia.org/geoiplookup"></script><link rel="dns-prefetch" href="//meta.wikimedia.org" /><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static-1.23wmf7/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Lempel–Ziv–Markov_chain_algorithm skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<div id="siteNotice"><!-- CentralNotice --></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Lempel–Ziv–Markov chain algorithm</span></h1>
+			<div id="bodyContent">
+								<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="dablink">"LZMA" redirects here. For the airport with the <a href="/wiki/International_Civil_Aviation_Organization_airport_code" title="International Civil Aviation Organization airport code">ICAO code</a> "LZMA", see <a href="/wiki/Martin_Airport_(Slovakia)" title="Martin Airport (Slovakia)">Martin Airport (Slovakia)</a>.</div>
+<p>The <b>Lempel–Ziv–Markov chain algorithm</b> (<b>LZMA</b>) is an <a href="/wiki/Algorithm" title="Algorithm">algorithm</a> used to perform <a href="/wiki/Lossless_data_compression" title="Lossless data compression" class="mw-redirect">lossless data compression</a>. It has been under development since 1998. The SDK history file states that it was in development from 1996, and first used in <a href="/wiki/7-Zip" title="7-Zip">7-Zip</a> 2001-08-30.<sup id="cite_ref-LZMA_SDK_1-0" class="reference"><a href="#cite_note-LZMA_SDK-1"><span>[</span>1<span>]</span></a></sup> Aside from some unreferenced comments about 1998, the algorithm appears to have been unpublished before its use in 7-Zip.<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span>[</span>2<span>]</span></a></sup> and was first used in the <a href="/wiki/7z" title="7z">7z</a> format of the 7-Zip archiver. This algorithm uses a <a href="/wiki/Dictionary_coder" title="Dictionary coder">dictionary compression</a> scheme somewhat similar to the <a href="/wiki/LZ77" title="LZ77" class="mw-redirect">LZ77</a> algorithm published by <a href="/wiki/Abraham_Lempel" title="Abraham Lempel">Abraham Lempel</a> and <a href="/wiki/Jacob_Ziv" title="Jacob Ziv">Jacob Ziv</a> in 1977 and features a high compression ratio (generally higher than <a href="/wiki/Bzip2" title="Bzip2">bzip2</a>)<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span>[</span>3<span>]</span></a></sup> <sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span>[</span>4<span>]</span></a></sup> and a variable compression-dictionary size (up to 4&#160;<a href="/wiki/Gigabyte" title="Gigabyte">GB</a>),<sup id="cite_ref-LZMA_Format_5-0" class="reference"><a href="#cite_note-LZMA_Format-5"><span>[</span>5<span>]</span></a></sup> while still maintaining decompression speed similar to other commonly used compression algorithms<sup id="cite_ref-6" class="reference"><a href="#cite_note-6"><span>[</span>6<span>]</span></a></sup></p>
+<p><b>LZMA2</b> is a simple container format that can include both uncompressed data and LZMA data, possibly with multiple different LZMA encoding parameters. LZMA2 supports arbitrarily scalable multithreaded compression and decompression and efficient compression of data which is partially incompressible.</p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Compressed_format_overview"><span class="tocnumber">2</span> <span class="toctext">Compressed format overview</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Decompression_algorithm_details"><span class="tocnumber">3</span> <span class="toctext">Decompression algorithm details</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Range_coding_of_bits"><span class="tocnumber">3.1</span> <span class="toctext">Range coding of bits</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Range_coding_of_integers"><span class="tocnumber">3.2</span> <span class="toctext">Range coding of integers</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#LZMA_configuration"><span class="tocnumber">3.3</span> <span class="toctext">LZMA configuration</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#LZMA_coding_contexts"><span class="tocnumber">3.4</span> <span class="toctext">LZMA coding contexts</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#LZMA2_format"><span class="tocnumber">3.5</span> <span class="toctext">LZMA2 format</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#xz_and_7z_formats"><span class="tocnumber">3.6</span> <span class="toctext">xz and 7z formats</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Compression_algorithm_details"><span class="tocnumber">4</span> <span class="toctext">Compression algorithm details</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="#Range_encoder"><span class="tocnumber">4.1</span> <span class="toctext">Range encoder</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Dictionary_search_data_structures"><span class="tocnumber">4.2</span> <span class="toctext">Dictionary search data structures</span></a>
+<ul>
+<li class="toclevel-3 tocsection-13"><a href="#Hash_chains"><span class="tocnumber">4.2.1</span> <span class="toctext">Hash chains</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="#Binary_trees"><span class="tocnumber">4.2.2</span> <span class="toctext">Binary trees</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="#Patricia_tries"><span class="tocnumber">4.2.3</span> <span class="toctext">Patricia tries</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-16"><a href="#LZMA_encoder"><span class="tocnumber">4.3</span> <span class="toctext">LZMA encoder</span></a>
+<ul>
+<li class="toclevel-3 tocsection-17"><a href="#Fast_encoder"><span class="tocnumber">4.3.1</span> <span class="toctext">Fast encoder</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="#Normal_encoder"><span class="tocnumber">4.3.2</span> <span class="toctext">Normal encoder</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-19"><a href="#LZMA2_encoder"><span class="tocnumber">4.4</span> <span class="toctext">LZMA2 encoder</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#Upper_encoding_layers"><span class="tocnumber">4.5</span> <span class="toctext">Upper encoding layers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="#7-Zip_reference_implementation"><span class="tocnumber">5</span> <span class="toctext">7-Zip reference implementation</span></a></li>
+<li class="toclevel-1 tocsection-22"><a href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-23"><a href="#References"><span class="tocnumber">7</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-24"><a href="#External_links"><span class="tocnumber">8</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="Overview">Overview</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=1" title="Edit section: Overview">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation">
+<tr>
+<td class="mbox-image">
+<div style="width:52px;"><a href="/wiki/File:Question_book-new.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png" width="50" height="39" srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/75px-Question_book-new.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/100px-Question_book-new.svg.png 2x" /></a></div>
+</td>
+<td class="mbox-text"><span class="mbox-text-span">This section <b>needs additional citations for <a href="/wiki/Wikipedia:Verifiability" title="Wikipedia:Verifiability">verification</a></b>. <span class="hide-when-compact">Please help <a class="external text" href="//en.wikipedia.org/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit">improve this article</a> by <a href="/wiki/Help:Introduction_to_referencing/1" title="Help:Introduction to referencing/1">adding citations to reliable sources</a>. Unsourced material may be challenged and removed.</span> <small><i>(July 2010)</i></small></span></td>
+</tr>
+</table>
+<p>LZMA uses a dictionary compression algorithm (a variant of <a href="/wiki/LZ77" title="LZ77" class="mw-redirect">LZ77</a> with huge dictionary sizes and special support for repeatedly used match distances), whose output is then encoded with a <a href="/wiki/Range_encoding" title="Range encoding">range encoder</a>, using a complex model to make a probability prediction of each bit. The dictionary compressor finds matches using sophisticated dictionary data structures, and produces a stream of literal symbols and phrase references, which is encoded one bit at a time by the range encoder: many encodings are possible, and a dynamic programming algorithm is used to select an optimal one under certain approximations.</p>
+<p>Prior to LZMA, most encoder models were purely byte-based (i.e. they coded each bit using only a cascade of contexts to represent the dependencies on previous bits from the same byte). The main innovation of LZMA is that instead of a generic byte-based model, LZMA's model uses contexts specific to the bitfields in each representation of a literal or phrase: this is nearly as simple as a generic byte-based model, but gives much better compression because it avoids mixing unrelated bits together in the same context. Furthermore, compared to classic dictionary compression (such as the one used in <a href="/wiki/ZIP_(file_format)" title="ZIP (file format)" class="mw-redirect">zip</a> and <a href="/wiki/Gzip" title="Gzip">gzip</a> formats), the dictionary sizes can be and usually are much larger, taking advantage of the large amount of memory available on modern systems.</p>
+<h2><span class="mw-headline" id="Compressed_format_overview">Compressed format overview</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=2" title="Edit section: Compressed format overview">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation">
+<tr>
+<td class="mbox-image">
+<div style="width:52px;"><a href="/wiki/File:Question_book-new.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/50px-Question_book-new.svg.png" width="50" height="39" srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/75px-Question_book-new.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/100px-Question_book-new.svg.png 2x" /></a></div>
+</td>
+<td class="mbox-text"><span class="mbox-text-span">This section <b>needs additional citations for <a href="/wiki/Wikipedia:Verifiability" title="Wikipedia:Verifiability">verification</a></b>. <span class="hide-when-compact">Please help <a class="external text" href="//en.wikipedia.org/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit">improve this article</a> by <a href="/wiki/Help:Introduction_to_referencing/1" title="Help:Introduction to referencing/1">adding citations to reliable sources</a>. Unsourced material may be challenged and removed.</span> <small><i>(July 2010)</i></small></span></td>
+</tr>
+</table>
+<p>In LZMA compression, the compressed stream is a stream of bits, encoded using an adaptive binary range coder. The stream is divided into packets, each packet describing either a single byte, or an LZ77 sequence with its length and distance implicitly or explicitly encoded. Each part of each packet is modeled with independent contexts, so the probability predictions for each bit are correlated with the values of that bit (and related bits from the same field) in previous packets of the same type.</p>
+<p>There are 7 types of packets:<sup class="Template-Fact" style="white-space:nowrap;">[<i><a href="/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (June 2013)">citation needed</span></a></i>]</sup></p>
+<table class="wikitable" border="1">
+<tr>
+<th>packed code (bit sequence)</th>
+<th>packet name</th>
+<th>packet description</th>
+</tr>
+<tr>
+<td>0 + byteCode</td>
+<td>LIT</td>
+<td>A single byte encoded using an adaptive binary range coder.</td>
+</tr>
+<tr>
+<td>1+0 + len + dist</td>
+<td>MATCH</td>
+<td>A typical LZ77 sequence describing sequence length and distance.</td>
+</tr>
+<tr>
+<td>1+1+0+0</td>
+<td>SHORTREP</td>
+<td>A one-byte LZ77 sequence. Distance is equal to the last used LZ77 distance.</td>
+</tr>
+<tr>
+<td>1+1+0+1 + len</td>
+<td>LONGREP[0]</td>
+<td>An LZ77 sequence. Distance is equal to the last used LZ77 distance.</td>
+</tr>
+<tr>
+<td>1+1+1+0 + len</td>
+<td>LONGREP[1]</td>
+<td>An LZ77 sequence. Distance is equal to the second last used LZ77 distance.</td>
+</tr>
+<tr>
+<td>1+1+1+1+0 + len</td>
+<td>LONGREP[2]</td>
+<td>An LZ77 sequence. Distance is equal to the third last used LZ77 distance.</td>
+</tr>
+<tr>
+<td>1+1+1+1+1 + len</td>
+<td>LONGREP[3]</td>
+<td>An LZ77 sequence. Distance is equal to the fourth last used LZ77 distance.</td>
+</tr>
+</table>
+<p>LONGREP[*] refers to LONGREP[0-3] packets, *REP refers to both LONGREP and SHORTREP, and *MATCH refers to both MATCH and *REP.</p>
+<p>LONGREP[n] packets remove the distance used from the list of the most recent distances and reinsert it at the front, to avoid useless repeated entry, while MATCH just adds the distance to the front even if already present in the list and SHORTREP and LONGREP[0] don't alter the list.</p>
+<p>The length is encoded as follows:<br /></p>
+<table class="wikitable" border="1">
+<tr>
+<th>Length code (bit sequence)</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>0+ 3 bits</td>
+<td>The length encoded using 3 bits, gives the lengths range from 2 to 9.</td>
+</tr>
+<tr>
+<td>1+0+ 3 bits</td>
+<td>The length encoded using 3 bits, gives the lengths range from 10 to 17.</td>
+</tr>
+<tr>
+<td>1+1+ 8 bits</td>
+<td>The length encoded using 8 bits, gives the lengths range from 18 to 273.</td>
+</tr>
+</table>
+<p>Like in LZ77, the length is not limited by the distance, because copying from the dictionary is defined as if the copy was performed byte by byte, keeping the distance constant.</p>
+<p>Distances are logically 32-bit and distance 0 points to the most recently added byte in the dictionary.</p>
+<p>The distance encoding starts with a 6-bit "distance slot", which determines whether how many further bits are needed. Distances are decoded as a binary concatenation of, from most to least significant, two bits depending on the distance slot, some bits encoded with fixed 0.5 probability, and some context encoded bits, according to the following table (distance slots 0-3 directly encode distances 0-3).</p>
+<table class="wikitable" border="1">
+<tr>
+<th>6-bit distance slot</th>
+<th>Highest 2 bits</th>
+<th>Fixed 0.5 probability bits</th>
+<th>Context encoded bits</th>
+</tr>
+<tr>
+<td>0</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>01</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>10</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>11</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>10</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>11</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>8</td>
+<td>10</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>11</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>10</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>13</td>
+<td>11</td>
+<td>0</td>
+<td>5</td>
+</tr>
+<tr>
+<td>14-62 (even)</td>
+<td>10</td>
+<td>((slot / 2) - 5)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>15-63 (odd)</td>
+<td>11</td>
+<td>(((slot - 1) / 2) - 5)</td>
+<td>4</td>
+</tr>
+</table>
+<h2><span class="mw-headline" id="Decompression_algorithm_details">Decompression algorithm details</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=3" title="Edit section: Decompression algorithm details">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="metadata plainlinks ambox ambox-content ambox-Original_research" role="presentation">
+<tr>
+<td class="mbox-image">
+<div style="width:52px;"><img alt="" src="//upload.wikimedia.org/wikipedia/en/f/f4/Ambox_content.png" width="40" height="40" /></div>
+</td>
+<td class="mbox-text"><span class="mbox-text-span">This section <b>possibly contains <a href="/wiki/Wikipedia:No_original_research" title="Wikipedia:No original research">original research</a></b>. <span class="hide-when-compact">Please <a class="external text" href="//en.wikipedia.org/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit">improve it</a> by <a href="/wiki/Wikipedia:Verifiability" title="Wikipedia:Verifiability">verifying</a> the claims made and adding <a href="/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a>. Statements consisting only of original research may be removed.</span> <small><i>(April 2012)</i></small></span></td>
+</tr>
+</table>
+<p>Unfortunately, no complete natural language specification of the compressed format seems to exist, other than the one attempted in the following text.</p>
+<p>The description below is based on the compact <a href="/wiki/Xz" title="Xz">XZ</a> Embedded decoder by Lasse Collin included in the Linux kernel source<sup id="cite_ref-7" class="reference"><a href="#cite_note-7"><span>[</span>7<span>]</span></a></sup> from which the LZMA and LZMA2 algorithm details can be relatively easily deduced: thus, while citing source code as reference isn't ideal, any programmer should be able to check the claims below with a few hours of work.</p>
+<h3><span class="mw-headline" id="Range_coding_of_bits">Range coding of bits</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=4" title="Edit section: Range coding of bits">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>LZMA data is at the lowest level decoded one-bit at a time by the range decoder, at the direction of the LZMA decoder.</p>
+<p>Context-based range decoding is invoked by the LZMA algorithm passing it a reference to the "context", which consists of the unsigned 11-bit variable <i>prob</i> (typically implemented using a 16-bit data type) representing the predicted probability of the bit being 1, which is read and updated by the range decoder (and should be initialized to 2^10, representing 0.5 probability).</p>
+<p>Fixed probability range decoding instead assumes a 0.5 probability, but operates slightly differently than context-based range decoding.</p>
+<p>The range decoder state consists of two unsigned 32-bit variables, <i>range</i> (representing the range size), and <i>code</i> (representing the encoded point within the range).</p>
+<p>Initialization of the range decoder consists of setting <i>range</i> to 2^32 - 1, and <i>code</i> to the 32-bit value starting at the second byte in the stream interpreted as big-endian; the first byte in the stream is completely ignored.</p>
+<p>Normalization proceeds in this way:</p>
+<ol>
+<li>Shift both <i>range</i> and <i>code</i> left by 8 bits</li>
+<li>Read a byte from the compressed stream</li>
+<li>Set the least significant 8 bits of <i>code</i> to the byte value read</li>
+</ol>
+<p>Context-based range decoding of a bit using the <i>prob</i> probability variable proceeds in this way:</p>
+<ol>
+<li>If <i>range</i> is less than 2^24, perform normalization</li>
+<li>Set <i>bound</i> to floor(<i>range</i> / 2^11) * <i>prob</i></li>
+<li>If <i>code</i> is less than <i>bound</i>:
+<ol>
+<li>Set <i>range</i> to <i>bound</i></li>
+<li>Set <i>prob</i> to <i>prob</i> + floor((2^11 - <i>prob</i>) / 2^5)</li>
+<li>Return bit 0</li>
+</ol>
+</li>
+<li>Otherwise (if <i>code</i> is greater or equal than <i>bound</i>):
+<ol>
+<li>Set <i>range</i> to <i>range</i> - <i>bound</i></li>
+<li>Set <i>code</i> to <i>code</i> - <i>bound</i></li>
+<li>Set <i>prob</i> to <i>prob</i> - floor(<i>prob</i> / 2^5)</li>
+<li>Return bit 1</li>
+</ol>
+</li>
+</ol>
+<p>Fixed-probability range decoding of a bit proceeds in this way:</p>
+<ol>
+<li>If <i>range</i> is less than 2^24, perform normalization</li>
+<li>Set <i>range</i> to floor(<i>range</i> / 2)</li>
+<li>If <i>code</i> is less than <i>range</i>:
+<ol>
+<li>Return bit 0</li>
+</ol>
+</li>
+<li>Otherwise (if <i>code</i> is greater or equal than <i>range</i>):
+<ol>
+<li>Set <i>code</i> to <i>code</i> - <i>range</i></li>
+<li>Return bit 1</li>
+</ol>
+</li>
+</ol>
+<p>The Linux kernel implementation of fixed-probability decoding in rc_direct, for performance reasons, doesn't include a conditional branch, but instead subtracts <i>range</i> from <i>code</i> unconditionally, and uses the resulting sign bit to both decide the bit to return, and to generate a mask that is combined with <i>code</i> and added to <i>range</i>.</p>
+<p>Note that:</p>
+<ol>
+<li>The division by 2^11 when computing <i>bound</i> and floor operation is done before the multiplication, not after (apparently to avoid requiring fast hardware support for 32-bit multiplication with a 64-bit result)</li>
+<li>Fixed probability decoding is not strictly equivalent to context-based range decoding with any <i>prob</i> value, due to the fact that context-based range decoding discards the lower 11 bits of <i>range</i> before multiplying by <i>prob</i> as just described, while fixed probability decoding only discards the last bit</li>
+</ol>
+<h3><span class="mw-headline" id="Range_coding_of_integers">Range coding of integers</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=5" title="Edit section: Range coding of integers">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The range decoder also provides the bit-tree, reverse bit-tree and fixed probability integer decoding facilities, which are used to decode integers, and generalize the single-bit decoding described above. To decode unsigned integers less than <i>limit</i>, an array of (<i>limit</i> - 1) 11-bit probability variables is provided, which are conceptually arranged as the internal nodes of a complete binary tree with <i>limit</i> leaves.</p>
+<p>Non-reverse bit-tree decoding works by keeping a pointer to the tree of variables, which starts at the root. As long as the pointer doesn't point to a leaf, a bit is decoded using the variable indicated by the pointer, and the pointer is moved to either the left or right children depending on whether the bit is 0 or 1; when the pointer points to a leaf, the number associated with the leaf is returned.</p>
+<p>Non-reverse bit-tree decoding thus happens from most significant to least significant bit, stopping when only one value in the valid range is possible (this conceptually allows to have range sizes that are not powers of two, even though LZMA doesn't make use of this).</p>
+<p>Reverse bit-tree decoding instead decodes from least significant bit to most significant bits, and thus only supports ranges that are powers of two, and always decodes the same number of bits. It is equivalent to performing non-reverse bittree decoding with a power of two <i>limit</i>, and reversing the last log2(<i>limit</i>) bits of the result.</p>
+<p>Note that in the rc_bittree function in the Linux kernel, integers are actually returned in the [<i>limit</i>, 2 * <i>limit</i>) range (with <i>limit</i> added to the conceptual value), and the variable at index 0 in the array is unused, while the one at index 1 is the root, and the left and right children indices are computed as 2<i>i</i> and 2<i>i</i> + 1. The rc_bittree_reverse function instead adds integers in the [0, <i>limit</i>) range to a caller-provided variable, where <i>limit</i> is implicitly represented by its logarithm, and has its own independent implementation for efficiency reasons.</p>
+<p>Fixed probability integer decoding simply performs fixed probability bit decoding repeatedly, reading bits from the most to the least significant.</p>
+<h3><span class="mw-headline" id="LZMA_configuration">LZMA configuration</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=6" title="Edit section: LZMA configuration">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The LZMA decoder is configured by an <i>lclppb</i> "properties" byte and a dictionary size.</p>
+<p>The value of the <i>lclppb</i> byte is <i>lc</i> + <i>lp</i> * 9 + <i>pb</i> * 9 * 5, where:</p>
+<ul>
+<li><i>lc</i> is the number of high bits of the previous byte to use as a context for literal encoding (the default value used by the LZMA SDK is 3)</li>
+<li><i>lp</i> is the number of low bits of the dictionary position to include in <i>literal_pos_state</i> (the default value used by the LZMA SDK is 0)</li>
+<li><i>pb</i> is the number of low bits of the dictionary position to include in <i>pos_state</i> (the default value used by the LZMA SDK is 2)</li>
+</ul>
+<p>In non-LZMA2 streams, <i>lc</i> must not be greater than 8, and <i>lp</i> and <i>pb</i> must not be greater than 4. In LZMA2 streams, (<i>lc</i> + <i>lp</i>) and <i>pb</i> must not be greater than 4.</p>
+<p>In the 7-zip LZMA file format, configuration is performed by a header containing the "properties" byte followed by the 32-bit little-endian dictionary size in bytes. In LZMA2, the properties byte can optionally be changed at the start of LZMA2 LZMA packets, while the dictionary size is specified in the LZMA2 header as later described.</p>
+<h3><span class="mw-headline" id="LZMA_coding_contexts">LZMA coding contexts</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=7" title="Edit section: LZMA coding contexts">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The LZMA packet format has already been described, and this section specifies how LZMA statistically models the LZ-encoded streams, or in other words which probability variables are passed to the range decoder to decode each bit.</p>
+<p>Those probability variables are implemented as multi-dimensional arrays; before introducing them, a few values that are used as indices in these multidimensional arrays are defined.</p>
+<p>The <i>state</i> value is conceptually based on which of the patterns in the following table match the latest 2-4 packet types seen, and is implemented as a state machine state updated according to the transition table listed in the table every time a packet is output.</p>
+<p>The initial state is 0, and thus packets before the beginning are assumed to be LIT packets.</p>
+<table class="wikitable" border="1">
+<tr>
+<th>state</th>
+<th colspan="4">previous packets</th>
+<th colspan="4">next state when next packet is</th>
+</tr>
+<tr>
+<th></th>
+<th>4th previous</th>
+<th>3rd previous</th>
+<th>2nd previous</th>
+<th>previous</th>
+<th>LIT</th>
+<th>MATCH</th>
+<th>LONGREP[*]</th>
+<th>SHORTREP</th>
+</tr>
+<tr>
+<td>0</td>
+<td></td>
+<td>LIT</td>
+<td>LIT</td>
+<td>LIT</td>
+<td>0</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>MATCH</td>
+<td>LIT</td>
+<td>LIT</td>
+<td>0</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td rowspan="2">2</td>
+<td></td>
+<td>LONGREP[*]</td>
+<td rowspan="2">LIT</td>
+<td rowspan="2">LIT</td>
+<td rowspan="2">0</td>
+<td rowspan="2">7</td>
+<td rowspan="2">8</td>
+<td rowspan="2">9</td>
+</tr>
+<tr>
+<td>*MATCH</td>
+<td>SHORTREP</td>
+</tr>
+<tr>
+<td>3</td>
+<td>LIT</td>
+<td>SHORTREP</td>
+<td>LIT</td>
+<td>LIT</td>
+<td>0</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td></td>
+<td>MATCH</td>
+<td>LIT</td>
+<td>1</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td rowspan="2">5</td>
+<td rowspan="2"></td>
+<td></td>
+<td>LONGREP[*]</td>
+<td rowspan="2">LIT</td>
+<td rowspan="2">2</td>
+<td rowspan="2">7</td>
+<td rowspan="2">8</td>
+<td rowspan="2">9</td>
+</tr>
+<tr>
+<td>*MATCH</td>
+<td>SHORTREP</td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>LIT</td>
+<td>SHORTREP</td>
+<td>LIT</td>
+<td>3</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td></td>
+<td>LIT</td>
+<td>MATCH</td>
+<td>4</td>
+<td>10</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>8</td>
+<td></td>
+<td></td>
+<td>LIT</td>
+<td>LONGREP[*]</td>
+<td>5</td>
+<td>10</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td></td>
+<td>LIT</td>
+<td>SHORTREP</td>
+<td>6</td>
+<td>10</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td></td>
+<td>*MATCH</td>
+<td>MATCH</td>
+<td>4</td>
+<td>10</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td></td>
+<td>*MATCH</td>
+<td>*REP</td>
+<td>5</td>
+<td>10</td>
+<td>11</td>
+<td>11</td>
+</tr>
+</table>
+<p>The <i>pos_state</i> and <i>literal_pos_state</i> values consist of respectively the <i>pb</i> and <i>lp</i> (up to 4, from the LZMA header or LZMA2 properties packet) least significant bits of the dictionary position (the number of bytes coded since the last dictionary reset modulo the dictionary size). Note that the dictionary size is normally the multiple of a large power of 2, so these values are equivalently described as the least significant bits of the number of uncompressed bytes seen since the last dictionary reset.</p>
+<p>The <i>prev_byte_lc_msbs</i> value is set to the <i>lc</i> (up to 4, from the LZMA header or LZMA2 properties packet) most significant bits of the previous uncompressed byte.</p>
+<p>The <i>is_REP</i> value denotes whether a packet that includes a length is a LONGREP rather than a MATCH.</p>
+<p>The <i>match_byte</i> value is the byte that would have been decoded if a SHORTREP packet had been used (in other words, the byte found at the dictionary at the last used distance); it is only used just after a *MATCH packet.</p>
+<p><i>literal_bit_mode</i> is an array of 8 values in the 0-2 range, one for each bit position in a byte, which are 1 or 2 if the previous packet was a *MATCH and it is either the most significant bit position or all the more significant bits in the literal to encode/decode are equal to the bits in the corresponding positions in <i>match_byte</i>, while otherwise it is 0; the choice between the 1 or 2 values depends on the value of the bit at the same position in <i>match_byte</i>.</p>
+<p>The literal/Literal set of variables can be seen as a "pseudo-bit-tree" similar to a bit-tree but with 3 variables instead of 1 in every node, chosen depending on the <i>literal_bit_mode</i> value at the bit position of the next bit to decode after the bit-tree context denoted by the node.</p>
+<p>The claim, found in some sources, that literals after a *MATCH are coded as the XOR of the byte value with <i>match_byte</i> is incorrect; they are instead coded simply as their byte value, but using the pseudo-bit-tree just described and the additional context listed in the table below.</p>
+<p>The probability variable groups used in LZMA are those:</p>
+<table class="wikitable" border="1">
+<tr>
+<th>XZ name</th>
+<th>LZMA SDK name</th>
+<th>parameterized by</th>
+<th>used when</th>
+<th>coding mode</th>
+<th>if bit 0 then</th>
+<th>if bit 1 then</th>
+</tr>
+<tr>
+<td>is_match</td>
+<td>IsMatch</td>
+<td><i>state</i>, <i>pos_state</i></td>
+<td>packet start</td>
+<td>bit</td>
+<td>LIT</td>
+<td>*MATCH</td>
+</tr>
+<tr>
+<td>is_rep</td>
+<td>IsRep</td>
+<td><i>state</i></td>
+<td>after bit sequence 1</td>
+<td>bit</td>
+<td>MATCH</td>
+<td>*REP</td>
+</tr>
+<tr>
+<td>is_rep0</td>
+<td>IsRepG0</td>
+<td><i>state</i></td>
+<td>after bit sequence 11</td>
+<td>bit</td>
+<td>SHORTREP/
+<p>LONGREP[0]</p>
+</td>
+<td>LONGREP[1-3]</td>
+</tr>
+<tr>
+<td>is_rep0_long</td>
+<td>IsRep0Long</td>
+<td><i>state</i>, <i>pos_state</i></td>
+<td>after bit sequence 110</td>
+<td>bit</td>
+<td>SHORTREP</td>
+<td>LONGREP[0]</td>
+</tr>
+<tr>
+<td>is_rep1</td>
+<td>IsRepG1</td>
+<td><i>state</i></td>
+<td>after bit sequence 111</td>
+<td>bit</td>
+<td>LONGREP[1]</td>
+<td>LONGREP[2/3]</td>
+</tr>
+<tr>
+<td>is_rep2</td>
+<td>IsRepG2</td>
+<td><i>state</i></td>
+<td>after bit sequence 1111</td>
+<td>bit</td>
+<td>LONGREP[2]</td>
+<td>LONGREP[3]</td>
+</tr>
+<tr>
+<td>literal</td>
+<td>Literal</td>
+<td><i>prev_byte_lc_msbs</i>, <i>literal_pos_state</i>, <i>literal_bit_mode</i>[bit position], bit-tree context</td>
+<td>after bit sequence 0</td>
+<td>256 values pseudo-bit-tree</td>
+<td colspan="2">literal byte value</td>
+</tr>
+<tr>
+<td>dist_slot</td>
+<td>PosSlot</td>
+<td>min(<i>match_length</i>, 5), bit-tree context</td>
+<td>distance: start</td>
+<td>64 values bit-tree</td>
+<td colspan="2">distance slot</td>
+</tr>
+<tr>
+<td>dist_special</td>
+<td>SpecPos</td>
+<td><i>distance_slot</i>, reverse bit-tree context</td>
+<td>distance: 4-13 distance slots</td>
+<td>((<i>distance_slot</i> &gt;&gt; 1) - 1)-bit reverse bit-tree</td>
+<td colspan="2">low bits of distance</td>
+</tr>
+<tr>
+<td>dist_align</td>
+<td>Align</td>
+<td>reverse bit-tree context</td>
+<td>distance: 14+ distance slots, after fixed probability bits</td>
+<td>4-bit reverse bit-tree</td>
+<td colspan="2">low bits of distance</td>
+</tr>
+<tr>
+<td>len_dec.choice</td>
+<td>LenChoice</td>
+<td><i>is_REP</i></td>
+<td>match length: start</td>
+<td>bit</td>
+<td>2-9 length</td>
+<td>10+ length</td>
+</tr>
+<tr>
+<td>len_dec.choice2</td>
+<td>LenChoice2</td>
+<td><i>is_REP</i></td>
+<td>match length: after bit sequence 1</td>
+<td>bit</td>
+<td>10-17 length</td>
+<td>18+ length</td>
+</tr>
+<tr>
+<td>len_dec.low</td>
+<td>LenLow</td>
+<td><i>is_REP</i>, <i>pos_state</i>, bit-tree context</td>
+<td>match length: after bit sequence 0</td>
+<td>8 values bit-tree</td>
+<td colspan="2">low bits of length</td>
+</tr>
+<tr>
+<td>len_dec.mid</td>
+<td>LenMid</td>
+<td><i>is_REP</i>, <i>pos_state</i>, bit-tree context</td>
+<td>match length: after bit sequence 10</td>
+<td>8 values bit-tree</td>
+<td colspan="2">middle bits of length</td>
+</tr>
+<tr>
+<td>len_dec.high</td>
+<td>LenHigh</td>
+<td><i>is_REP</i>, bit-tree context</td>
+<td>match length: after bit sequence 11</td>
+<td>256 values bit-tree</td>
+<td colspan="2">high bits of length</td>
+</tr>
+</table>
+<h3><span class="mw-headline" id="LZMA2_format">LZMA2 format</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=8" title="Edit section: LZMA2 format">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The LZMA2 container supports multiple runs of compressed LZMA data and uncompressed data. Each LZMA compressed run can have a different LZMA configuration and dictionary. This improves the compression of partially or completely incompressible files and allows multithreaded compression and multithreaded decompression by breaking the file into runs that can be compressed or decompressed independently in parallel.</p>
+<p>The LZMA2 header consists of a byte indicating the dictionary size:</p>
+<ul>
+<li>40 indicates a 4GB - 1 dictionary size</li>
+<li>Even values less than 40 indicate a 2^(v/2 + 12) bytes dictionary size</li>
+<li>Odd values less than 40 indicate a 3*2^((v - 1)/2 + 11) bytes dictionary size</li>
+<li>Values higher than 40 are invalid</li>
+</ul>
+<p>LZMA2 data consists of packets starting with a control byte, with the following values:</p>
+<ul>
+<li>0 denotes the end of the file</li>
+<li>1 denotes a dictionary reset followed by an uncompressed chunk</li>
+<li>2 denotes an uncompressed chunk without a dictionary reset</li>
+<li>3-0x7f are invalid values</li>
+<li>0x80-0xff denotes an LZMA chunk, where the lowest 5 bits are used as bit 16-20 of the uncompressed size minus one, and bit 5-6 indicates what should be reset</li>
+</ul>
+<p>Bits 5-6 for LZMA chunks can be:</p>
+<ul>
+<li>0: nothing reset</li>
+<li>1: state reset</li>
+<li>2: state reset, properties reset using properties byte</li>
+<li>3: state reset, properties reset using properties byte, dictionary reset</li>
+</ul>
+<p>LZMA state resets cause a reset of all LZMA state except the dictionary, and specifically:</p>
+<ul>
+<li>The range coder</li>
+<li>The <i>state</i> value</li>
+<li>The last distances for repeated matches</li>
+<li>All LZMA probabilities</li>
+</ul>
+<p>Uncompressed chunks consist of:</p>
+<ul>
+<li>A 16-bit big-endian value encoding the data size minus one</li>
+<li>The data to be copied verbatim into the dictionary and the output</li>
+</ul>
+<p>LZMA chunks consist of:</p>
+<ul>
+<li>A 16-bit big-endian value encoding the low 16-bits of the uncompressed size minus one</li>
+<li>A 16-bit big-endian value encoding the compressed size minus one</li>
+<li>A properties/lclppb byte if bit 6 in the control byte is set</li>
+<li>The LZMA compressed data, starting with the 5 bytes (of which the first is ignored) used to initialize the range coder (which are included in the compressed size)</li>
+</ul>
+<h3><span class="mw-headline" id="xz_and_7z_formats">xz and 7z formats</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=9" title="Edit section: xz and 7z formats">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The .xz format, which can contain LZMA2 data, is documented at <i>tukaani.org</i>,<sup id="cite_ref-8" class="reference"><a href="#cite_note-8"><span>[</span>8<span>]</span></a></sup> while the .7z file format, which can contain either LZMA or LZMA2 data, is documented in the 7zformat.txt file contained in the LZMA SDK.<sup id="cite_ref-LZMA_SDK_1-1" class="reference"><a href="#cite_note-LZMA_SDK-1"><span>[</span>1<span>]</span></a></sup></p>
+<h2><span class="mw-headline" id="Compression_algorithm_details">Compression algorithm details</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=10" title="Edit section: Compression algorithm details">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="metadata plainlinks ambox ambox-content ambox-Original_research" role="presentation">
+<tr>
+<td class="mbox-image">
+<div style="width:52px;"><img alt="" src="//upload.wikimedia.org/wikipedia/en/f/f4/Ambox_content.png" width="40" height="40" /></div>
+</td>
+<td class="mbox-text"><span class="mbox-text-span">This section <b>possibly contains <a href="/wiki/Wikipedia:No_original_research" title="Wikipedia:No original research">original research</a></b>. <span class="hide-when-compact">Please <a class="external text" href="//en.wikipedia.org/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit">improve it</a> by <a href="/wiki/Wikipedia:Verifiability" title="Wikipedia:Verifiability">verifying</a> the claims made and adding <a href="/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a>. Statements consisting only of original research may be removed.</span> <small><i>(April 2012)</i></small></span></td>
+</tr>
+</table>
+<p>Similar to the decompression format situation, no complete natural language specification of the encoding techniques in <a href="/wiki/7-zip" title="7-zip" class="mw-redirect">7-zip</a> or <a href="/wiki/Xz" title="Xz">xz</a> seems to exist, other than the one attempted in the following text.</p>
+<p>The description below is based on the <a href="/wiki/XZ_Utils" title="XZ Utils">XZ</a> for Java encoder by Lasse Collin,<sup id="cite_ref-9" class="reference"><a href="#cite_note-9"><span>[</span>9<span>]</span></a></sup> which appears to be the most readable among several rewrites of the original 7-zip using the same algorithms: again, while citing source code as reference isn't ideal, any programmer should be able to check the claims below with a few hours of work.</p>
+<h3><span class="mw-headline" id="Range_encoder">Range encoder</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=11" title="Edit section: Range encoder">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The range encoder cannot make any interesting choices, and can be readily constructed based on the decoder description.</p>
+<p>Initialization and termination are not fully determined; the <a href="/wiki/Xz" title="Xz">xz</a> encoder outputs 0 as the first byte which is ignored by the decompressor, and encodes the lower bound of the range (which matters for the final bytes).</p>
+<p>The <a href="/wiki/Xz" title="Xz">xz</a> encoder uses an unsigned 33-bit variable called <i>low</i> (typically implemented as a 64-bit integer, initialized to 0), an unsigned 32-bit variable called <i>range</i> (initialized to 2^32 - 1), an unsigned 8-bit variable called <i>cache</i> (initialized to 0), and an unsigned variable called <i>cache_size</i> which needs to be large enough to store the uncompressed size (initialized to 1, typically implemented as a 64-bit integer).</p>
+<p>The <i>cache</i>/<i>cache_size</i> variables are used to properly handle carries, and represent a number defined by a big-endian sequence starting with the <i>cache</i> value, and followed by <i>cache_size</i> 0xff bytes, which has been shifted out of the <i>low</i> register, but hasn't been written yet, because it could be incremented by one due to a carry.</p>
+<p>Note that the first byte output will always be 0 due to the fact that <i>cache</i> and <i>low</i> are initialized to 0, and the encoder implementation; the <a href="/wiki/Xz" title="Xz">xz</a> decoder ignores this byte.</p>
+<p>Normalization proceeds in this way:</p>
+<ol>
+<li>If <i>low</i> is less than (2^32 - 2^24):
+<ol>
+<li>Output the byte stored in <i>cache</i> to the compressed stream</li>
+<li>Output <i>cache_size</i> - 1 bytes with 0xff value</li>
+<li>Set <i>cache</i> to bits 24-31 of <i>low</i></li>
+<li>Set <i>cache_size</i> to 0</li>
+</ol>
+</li>
+<li>If <i>low</i> is greater or equal than 2^32:
+<ol>
+<li>Output the byte stored in <i>cache</i> plus one to the compressed stream</li>
+<li>Output <i>cache_size</i> - 1 bytes with 0 value</li>
+<li>Set <i>cache</i> to bits 24-31 of <i>low</i></li>
+<li>Set <i>cache_size</i> to 0</li>
+</ol>
+</li>
+<li>Increment <i>cache_size</i></li>
+<li>Set <i>low</i> to the lowest 24 bits of <i>low</i> shifted left by 8 bits</li>
+<li>Set <i>range</i> to <i>range</i> shifted left by 8 bits</li>
+</ol>
+<p>Context-based range encoding of a bit using the <i>prob</i> probability variable proceeds in this way:</p>
+<ol>
+<li>If <i>range</i> is less than 2^24, perform normalization</li>
+<li>Set <i>bound</i> to floor(<i>range</i> / 2^11) * <i>prob</i></li>
+<li>If encoding a 0 bit:
+<ol>
+<li>Set <i>range</i> to <i>bound</i></li>
+<li>Set <i>prob</i> to <i>prob</i> + floor((2^11 - <i>prob</i>) / 2^5)</li>
+</ol>
+</li>
+<li>Otherwise (if encoding a 1 bit):
+<ol>
+<li>Set <i>range</i> to <i>range</i> - <i>bound</i></li>
+<li>Set <i>low to</i> low + <i>bound</i></li>
+<li>Set <i>prob</i> to <i>prob</i> - floor(<i>prob</i> / 2^5)</li>
+</ol>
+</li>
+</ol>
+<p>Fixed-probability range encoding of a bit proceeds in this way:</p>
+<ol>
+<li>If <i>range</i> is less than 2^24, perform normalization</li>
+<li>Set <i>range</i> to floor(<i>range</i> / 2)</li>
+<li>If encoding a 1 bit:
+<ol>
+<li>Set <i>low</i> to <i>low</i> + <i>range</i></li>
+</ol>
+</li>
+</ol>
+<p>Termination proceeds this way:</p>
+<ol>
+<li>Perform normalization 5 times</li>
+</ol>
+<p>Bit-tree encoding is performed like decoding, except that bit values are taken from the input integer to be encoded rather than from the result of the bit decoding functions.</p>
+<p>For algorithms that try to compute the encoding with the shortest post-range-encoding size, the encoder also needs to provide an estimate of that.</p>
+<h3><span class="mw-headline" id="Dictionary_search_data_structures">Dictionary search data structures</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=12" title="Edit section: Dictionary search data structures">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The encoder needs to be able to quickly locate matches in the dictionary. Since LZMA uses very large dictionaries (potentially on the order of gigabytes) to improve compression, simply scanning the whole dictionary would result in an encoder too slow to be practically usable, so sophisticated data structures are needed to support fast match searches.</p>
+<h4><span class="mw-headline" id="Hash_chains">Hash chains</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=13" title="Edit section: Hash chains">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The simplest approach, called "hash chains", is parameterized by a constant N which can be either 2, 3 or 4, which is typically chosen so that 2^(8*N) is greater or equal than the dictionary size.</p>
+<p>It consists of creating, for each <i>k</i> less than <i>N</i>, a hash table indexed by tuples of <i>k</i> bytes, where each of the buckets contains the last position where the first <i>k</i> bytes hashed to the hash value associated with that hash table bucket.</p>
+<p>Chaining is achieved by an additional array which stores, for every dictionary position, the last seen previous position whose first <i>N</i> bytes hash to the same value of the first <i>N</i> bytes of the position in question.</p>
+<p>To find matches of length <i>N</i> or higher, a search is started using the <i>N</i>-sized hash table, and continued using the hash chain array; the search stop after a pre-defined number of hash chain nodes has been traversed, or when the hash chains "wraps around", indicating that the portion of the input that has been overwritten in the dictionary has been reached.</p>
+<p>Matches of size less than <i>N</i> are instead found by simply looking at the corresponding hash table, which either contains the latest such match, if any, or a string that hashes to the same value; in the latter case, the encoder won't be able to find the match. This issue is mitigated by the fact that for distant short matches using multiple literals might require less bits, and having hash conflicts in nearby strings is relatively unlikely; using larger hash tables or even direct lookup tables can reduce the problem at the cost of higher cache miss rate and thus lower performance.</p>
+<p>Note that all matches need to be validated to check that the actual bytes match currently at that specific dictionary position match, since the hashing mechanism only guarantees that at some past time there were characters hashing to the hash table bucket index (some implementations may not even guarantee that, because they don't initialize the data structures).</p>
+<h4><span class="mw-headline" id="Binary_trees">Binary trees</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=14" title="Edit section: Binary trees">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The <a href="/wiki/Binary_tree" title="Binary tree">binary tree</a> approach follows the hash chain approach, except that it logically uses a binary tree instead of a linked list for chaining.</p>
+<p>The binary tree is maintained so that it is always both a search tree relative to the suffix lexicographic ordering, and a max-heap for the dictionary position<sup id="cite_ref-solomon_10-0" class="reference"><a href="#cite_note-solomon-10"><span>[</span>10<span>]</span></a></sup> (in other words, the root is always the most recent string, and a child cannot have been added more recently than its parent): assuming all strings are lexicographically ordered, these conditions clearly uniquely determine the binary tree (this is trivially provable by induction on the size of the tree).</p>
+<p>Since the string to search for and the string to insert are the same, it is possible to perform both dictionary search and insertion (which requires to rotate the tree) in a single tree traversal.</p>
+<h4><span class="mw-headline" id="Patricia_tries">Patricia tries</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=15" title="Edit section: Patricia tries">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>Some old LZMA encoders also supported a data structure based on <a href="/wiki/Patricia_trie" title="Patricia trie" class="mw-redirect">Patricia tries</a>, but such support has since been dropped since it was deemed inferior to the other options.<sup id="cite_ref-solomon_10-1" class="reference"><a href="#cite_note-solomon-10"><span>[</span>10<span>]</span></a></sup></p>
+<h3><span class="mw-headline" id="LZMA_encoder">LZMA encoder</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=16" title="Edit section: LZMA encoder">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>LZMA encoders can freely decide which match to output, or whether to ignore the presence of matches and output literals anyway.</p>
+<p>The ability to recall the 4 most recently used distances means that, in principle, using a match with a distance that will be needed again later may be globally optimal even if it is not locally optimal, and as a result of this, optimal LZMA compression probably requires knowledge of the whole input and might require algorithms too slow to be usable in practice.</p>
+<p>Due to this, practical implementations tend to employ non-global heuristics.</p>
+<p>The <a href="/wiki/Xz" title="Xz">xz</a> encoders use a value called <i>nice_len</i> (the default is 64): when any match of length at least <i>nice_len</i> is found, the encoder stops the search and outputs it, with the maximum matching length.</p>
+<h4><span class="mw-headline" id="Fast_encoder">Fast encoder</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=17" title="Edit section: Fast encoder">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The XZ fast encoder <sup id="cite_ref-11" class="reference"><a href="#cite_note-11"><span>[</span>11<span>]</span></a></sup> (derived from the 7-zip fast encoder) is the shortest LZMA encoder in the <a href="/wiki/Xz" title="Xz">xz</a> source tree.</p>
+<p>It works like this:</p>
+<ol>
+<li>Perform combined search and insertion in the dictionary data structure</li>
+<li>If any repeated distance matches with length at least <i>nice_len</i>:
+<ul>
+<li>Output the most frequently used such distance with a REP packet</li>
+</ul>
+</li>
+<li>If a match was found of length at least <i>nice_len</i>:
+<ul>
+<li>Output it with a MATCH packet</li>
+</ul>
+</li>
+<li>Set the main match to the longest match</li>
+<li>Look at the nearest match of every length in decreasing length order, and until no replacement can be made:
+<ul>
+<li>Replace the main match with a match which is one character shorter, but whose distance is less than 1/128 the current main match distance</li>
+</ul>
+</li>
+<li>Set the main match length to 1 if the current main match is of length 2 and distance at least 128</li>
+<li>If a repeated match was found, and its length is at least 1 character less than the main match:
+<ul>
+<li>Output the repeated match with a REP packet</li>
+</ul>
+</li>
+<li>If a repeated match was found, and its length is at least 2 character less than the main match, and the main match distance is at least 512:
+<ul>
+<li>Output the repeated match with a REP packet</li>
+</ul>
+</li>
+<li>If a repeated match was found, and its length is at least 3 character less than the main match, and the main match distance is at least 32768:
+<ul>
+<li>Output the repeated match with a REP packet</li>
+</ul>
+</li>
+<li>If the main match size is less than 2 (or there isn't any match):
+<ul>
+<li>Output a LIT packet</li>
+</ul>
+</li>
+<li>Perform a dictionary search for the next byte</li>
+<li>If the next byte has a match with length at least one less than the main match length, with distance less than 1/128 times the main match distance, and if the main match length is at least 3:
+<ul>
+<li>Output a LIT packet</li>
+</ul>
+</li>
+<li>If the next byte has a match at least as long as the main match, and with less distance than the main match:
+<ul>
+<li>Output a LIT packet</li>
+</ul>
+</li>
+<li>If the next byte has a match at least one character longer than the main match, and such that 1/128 of its distance is less or equal than the main match distance:
+<ul>
+<li>Output a LIT packet</li>
+</ul>
+</li>
+<li>If the next byte has a match more than one character longer than the main match:
+<ul>
+<li>Output a LIT packet</li>
+</ul>
+</li>
+<li>If any repeated match has length at least one less than the main match length:
+<ul>
+<li>Output the most frequently used such distance with a REP packet</li>
+</ul>
+</li>
+<li>Output the main match with a MATCH packet</li>
+</ol>
+<h4><span class="mw-headline" id="Normal_encoder">Normal encoder</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=18" title="Edit section: Normal encoder">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The XZ normal encoder<sup id="cite_ref-12" class="reference"><a href="#cite_note-12"><span>[</span>12<span>]</span></a></sup> (derived from the 7-zip normal encoder) is the other LZMA encoder in the <a href="/wiki/Xz" title="Xz">xz</a> source tree, which adopts a more sophisticated approach that tries to minimize the post-range-encoding size of the generated packets.</p>
+<p>Specifically, it encodes portions of the input using the result of a dynamic programming algorithm, where the subproblems are finding the approximately optimal encoding (the one with minimal post-range-encoding size) of the substring of length L starting at the byte being compressed.</p>
+<p>The size of the portion of the input processed in the dynamic programming algorithm is determined to be the maximum between the longest dictionary match and the longest repeated match found at the start position (which is capped by the maximum LZMA match length, 273); furthermore, if a match longer than <i>nice_len</i> is found at any point in the range just defined, the dynamic programming algorithm stops, the solution for the subproblem up to that point is output, the <i>nice_len</i>-sized match is output, and a new dynamic programming problem instance is started at the byte after the match is output.</p>
+<p>Subproblem candidate solutions are incrementally updated with candidate encodings, constructed taking the solution for a shorter substring of length L', extended with all possible "tails", or sets of 1-3 packets with certain constraints that encode the input at the L' position. Once the final solution of a subproblem is found, the LZMA state and least used distances for it are computed, and are then used to appropriately compute post-range-encoding sizes of its extensions.</p>
+<p>At the end of the dynamic programming optimization, the whole optimal encoding of the longest substring considered is output, and encoding continues at the first uncompressed byte not already encoded, after updating the LZMA state and least used distances.</p>
+<p>Each subproblem is extended by a packet sequence which we call "tail", which must match one of the following patterns:</p>
+<table class="wikitable" border="1">
+<tr>
+<th>1st packet</th>
+<th>2nd packet</th>
+<th>3rd packet</th>
+</tr>
+<tr>
+<td>any</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LIT</td>
+<td>LONGREP[0]</td>
+<td></td>
+</tr>
+<tr>
+<td>*MATCH</td>
+<td>LIT</td>
+<td>LONGREP[0]</td>
+</tr>
+</table>
+<p>The reason for not only extending with single packets is that subproblems only have the substring length as the parameter for performance and algorithmic complexity reasons, while an optimal dynamic programming approach would also require to have the last used distances and LZMA <i>state</i> as parameter; thus, extending with multiple packets allows to better approximate the optimal solution, and specifically to make better use of LONGREP[0] packets.</p>
+<p>The following data is stored for each subproblem (of course, the values stored are for the candidate solution with minimum <i>price</i>), where by "tail" we refer to the packets extending the solution of the smaller subproblem, which are described directly in the following structure:</p>
+<table class="wikitable" border="1">
+<tr>
+<th>XZ for Java member name</th>
+<th>description</th>
+</tr>
+<tr>
+<td>price</td>
+<td>quantity to be minimized: number of post-range-encoding bits needed to encode the string</td>
+</tr>
+<tr>
+<td>optPrev</td>
+<td>uncompressed size of the substring encoded by all packets except the last one</td>
+</tr>
+<tr>
+<td>backPrev</td>
+<td>-1 if the last packet is LIT, 0-3 if it is a repetition using the last used distance number 0-3, 4 + <i>distance</i> if it is a MATCH (this is always 0 if prev1IsLiteral is true, since the last packet can only be a LONGREP[0] in that case)</td>
+</tr>
+<tr>
+<td>prev1IsLiteral</td>
+<td>true if the "tail" contains more than one packet (in which case the one before the last is a LIT)</td>
+</tr>
+<tr>
+<td>hasPrev2</td>
+<td>true if the "tail" contains 3 packets (only valid if prev1IsLiteral is true)</td>
+</tr>
+<tr>
+<td>optPrev2</td>
+<td>uncompressed size of the substring encoded by all packets except the "tail" (only valid if prev1IsLiteral and hasPrev2 are true)</td>
+</tr>
+<tr>
+<td>backPrev2</td>
+<td>-1 if the first packet in the "tail" is LIT, 0-3 if it is a repetition using the last used distance number 0-3, 4 + <i>distance</i> if it is a MATCH (only valid if prev1IsLiteral and hasPrev2 are true)</td>
+</tr>
+<tr>
+<td>reps[4]</td>
+<td>the values of the 4 last used distances after the packets in the solution (computed only after the best subproblem solution has been determined)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>the LZMA <i>state</i> value after the packets in the solution (computed only after the best subproblem solution has been determined)</td>
+</tr>
+</table>
+<p>Note that in the XZ for Java implementation, the <i>optPrev</i> and <i>backPrev</i> members are reused to store a forward single-linked list of packets as part of outputting the final solution.</p>
+<h3><span class="mw-headline" id="LZMA2_encoder">LZMA2 encoder</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=19" title="Edit section: LZMA2 encoder">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The <a href="/wiki/XZ_Utils" title="XZ Utils">XZ</a> LZMA2 encoder processes the input in chunks (of up to 2MB uncompressed size or 64KB compressed size, whichever is lower), handing each chunk to the LZMA encoder, and then deciding whether to output an LZMA2 LZMA chunk including the encoded data, or to output an LZMA2 uncompressed chunk, depending on which is shorter (LZMA, like any other compressor, will necessarily expand rather than compress some kinds of data).</p>
+<p>The LZMA state is reset only in the first block, if the caller requests a change of properties and every time a compressed chunk is output. The LZMA properties are changed only in the first block, or if the caller requests a change of properties. The dictionary is only reset in the first block.</p>
+<h3><span class="mw-headline" id="Upper_encoding_layers">Upper encoding layers</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=20" title="Edit section: Upper encoding layers">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Before LZMA2 encoding, depending on the options provided, <a href="/wiki/Xz" title="Xz">xz</a> can apply the BCJ filter, which filters executable code to replace relative offsets with absolute ones that are more repetitive, or the delta filter, which replaces each byte with the difference between it and the byte N bytes before it.</p>
+<p>Parallel encoding is performed by dividing the file in chunks which are distributed to threads, and ultimately each encoded (using, for instance, <a href="/wiki/Xz" title="Xz">xz</a> block encoding) separately, resulting in a dictionary reset between chunks in the output file.</p>
+<h2><span class="mw-headline" id="7-Zip_reference_implementation">7-Zip reference implementation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=21" title="Edit section: 7-Zip reference implementation">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The LZMA implementation extracted from <a href="/wiki/7-Zip" title="7-Zip">7-Zip</a> is available as LZMA SDK. It was placed by <a href="/wiki/Igor_Pavlov_(programmer)" title="Igor Pavlov (programmer)">Igor Pavlov</a> in the <a href="/wiki/Public_domain" title="Public domain">public domain</a> on December 2, 2008, with the release of version 4.62.<sup id="cite_ref-LZMA_SDK_1-2" class="reference"><a href="#cite_note-LZMA_SDK-1"><span>[</span>1<span>]</span></a></sup> It was originally dual licenced<sup class="noprint selfreference">[<i><a href="/wiki/Talk:Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm#.22originally.22_used_without_source" title="Talk:Lempel–Ziv–Markov chain algorithm">discuss</a></i>]</sup> under both the <a href="/wiki/GNU_Lesser_General_Public_License" title="GNU Lesser General Public License">GNU LGPL</a> and <a href="/wiki/Common_Public_License" title="Common Public License">Common Public License</a>, with an additional special exception for linked binaries.</p>
+<p>LZMA2 compression, which is an improved version of LZMA,<sup id="cite_ref-13" class="reference"><a href="#cite_note-13"><span>[</span>13<span>]</span></a></sup> has been introduced in version 9.04 beta, of May 30, 2009.<sup id="cite_ref-14" class="reference"><a href="#cite_note-14"><span>[</span>14<span>]</span></a></sup></p>
+<p>The reference <a href="/wiki/Open_source" title="Open source">open source</a> LZMA compression library is written in <a href="/wiki/C%2B%2B" title="C++">C++</a> and has the following properties:</p>
+<ul>
+<li>Compression speed: approximately 1&#160;MB per <a href="/wiki/Second" title="Second">second</a> on a 2&#160;GHz <a href="/wiki/Central_processing_unit" title="Central processing unit">CPU</a></li>
+<li>Decompression speed: 10-20&#160;MB per second on a 2&#160;GHz CPU</li>
+<li>Support for <a href="/wiki/Thread_(computer_science)" title="Thread (computer science)" class="mw-redirect">multi-threading</a>.</li>
+</ul>
+<p>In addition to the original <a href="/wiki/C%2B%2B" title="C++">C++</a>, the LZMA SDK contains reference implementations of LZMA compression and decompression ported to <a href="/wiki/C_(programming_language)" title="C (programming language)">ANSI C</a>, <a href="/wiki/C_Sharp_(programming_language)" title="C Sharp (programming language)">C#</a>, and <a href="/wiki/Java_(programming_language)" title="Java (programming language)">Java</a>.<sup id="cite_ref-LZMA_SDK_1-3" class="reference"><a href="#cite_note-LZMA_SDK-1"><span>[</span>1<span>]</span></a></sup> There are also third-party <a href="/wiki/Python_(programming_language)" title="Python (programming language)">Python</a> bindings for the C++ library as well as ports of LZMA to <a href="/wiki/Pascal_(programming_language)" title="Pascal (programming language)">Pascal</a> and <a href="/wiki/Go_(programming_language)" title="Go (programming language)">Go</a>.<sup id="cite_ref-15" class="reference"><a href="#cite_note-15"><span>[</span>15<span>]</span></a></sup> <sup id="cite_ref-16" class="reference"><a href="#cite_note-16"><span>[</span>16<span>]</span></a></sup> <sup id="cite_ref-17" class="reference"><a href="#cite_note-17"><span>[</span>17<span>]</span></a></sup></p>
+<p>The 7-Zip implementation uses several variants of <a href="/wiki/Hash_chain" title="Hash chain">hash chains</a>, <a href="/wiki/Binary_tree" title="Binary tree">binary trees</a> and <a href="/wiki/Patricia_trie" title="Patricia trie" class="mw-redirect">Patricia tries</a> as the basis for its dictionary search algorithm.</p>
+<p>Decompression-only code for LZMA generally compiles to around 5&#160;KB and the amount of RAM required during decompression is principally determined by the size of the <a href="/wiki/Sliding_window" title="Sliding window" class="mw-redirect">sliding window</a> used during compression. Small code size and relatively low memory overhead, particularly with smaller dictionary lengths, and free source code make the LZMA decompression algorithm well-suited to <a href="/wiki/Embedded_system" title="Embedded system">embedded</a> applications.</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=22" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/Lzip" title="Lzip">lzip</a>, a LZMA implementation</li>
+<li><a href="/wiki/Xz" title="Xz">xz</a>, a file format incorporating LZMA2</li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=23" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-LZMA_SDK-1"><span class="mw-cite-backlink">^ <a href="#cite_ref-LZMA_SDK_1-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-LZMA_SDK_1-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-LZMA_SDK_1-2"><sup><i><b>c</b></i></sup></a> <a href="#cite_ref-LZMA_SDK_1-3"><sup><i><b>d</b></i></sup></a></span> <span class="reference-text"><span class="citation web">Igor Pavlov (2013). <a rel="nofollow" class="external text" href="http://7-zip.org/sdk.html">"LZMA SDK (Software Development Kit)"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Igor+Pavlov&amp;rft.aulast=Igor+Pavlov&amp;rft.btitle=LZMA+SDK+%28Software+Development+Kit%29&amp;rft.date=2013&amp;rft.genre=book&amp;rft_id=http%3A%2F%2F7-zip.org%2Fsdk.html&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><span class="citation web"><a href="/wiki/Igor_Pavlov_(programmer)" title="Igor Pavlov (programmer)">Igor Pavlov</a> has asserted multiple times on <a href="/wiki/SourceForge" title="SourceForge">SourceForge</a> that the algorithm is his own creation. (2004-02-19). <a rel="nofollow" class="external text" href="http://www.webcitation.org/5jImhbWcv">"LZMA spec?"</a>. Archived from <a rel="nofollow" class="external text" href="http://sourceforge.net/forum/forum.php?thread_id=1025556&amp;forum_id=45797">the original</a> on 2009-08-25<span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Igor+Pavlov+has+asserted+multiple+times+on+SourceForge+that+the+algorithm+is+his+own+creation.&amp;rft.aulast=Igor+Pavlov+has+asserted+multiple+times+on+SourceForge+that+the+algorithm+is+his+own+creation.&amp;rft.btitle=LZMA+spec%3F&amp;rft.date=2004-02-19&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fsourceforge.net%2Fforum%2Fforum.php%3Fthread_id%3D1025556%26forum_id%3D45797&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text"><span class="citation web">Collin, Lasse (2005-05-31). <a rel="nofollow" class="external text" href="http://tukaani.org/lzma/benchmarks.html">"A Quick Benchmark: Gzip vs. Bzip2 vs. LZMA"</a>. <i><a rel="nofollow" class="external text" href="http://tukaani.org/">The Tukaani Project</a></i><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.atitle=A+Quick+Benchmark%3A+Gzip+vs.+Bzip2+vs.+LZMA&amp;rft.au=Collin%2C+Lasse&amp;rft.aufirst=Lasse&amp;rft.aulast=Collin&amp;rft.date=2005-05-31&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Ftukaani.org%2Flzma%2Fbenchmarks.html&amp;rft.jtitle=%5Bhttp%3A%2F%2Ftukaani.org%2F+The+Tukaani+Project%5D&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><span class="citation web">Klausmann, Tobias (2008-05-08). <a rel="nofollow" class="external text" href="http://blog.i-no.de/archives/2008/05/08/index.html#e2008-05-08T16_35_13.txt">"Gzip, Bzip2 and Lzma compared"</a>. <i><a rel="nofollow" class="external text" href="http://blog.i-no.de/">Blog of an Alpha animal</a></i><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.atitle=Gzip%2C+Bzip2+and+Lzma+compared&amp;rft.aufirst=Tobias&amp;rft.au=Klausmann%2C+Tobias&amp;rft.aulast=Klausmann&amp;rft.date=2008-05-08&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fblog.i-no.de%2Farchives%2F2008%2F05%2F08%2Findex.html%23e2008-05-08T16_35_13.txt&amp;rft.jtitle=%5Bhttp%3A%2F%2Fblog.i-no.de%2F+Blog+of+an+Alpha+animal%5D&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-LZMA_Format-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-LZMA_Format_5-0">^</a></b></span> <span class="reference-text"><span class="citation web">Igor Pavlov (2013). <a rel="nofollow" class="external text" href="http://www.7-zip.org/7z.html">"7z Format"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Igor+Pavlov&amp;rft.aulast=Igor+Pavlov&amp;rft.btitle=7z+Format&amp;rft.date=2013&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.7-zip.org%2F7z.html&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-6">^</a></b></span> <span class="reference-text"><span class="citation web">Mahoney, Matt. <a rel="nofollow" class="external text" href="http://mattmahoney.net/dc/dce.html#Section_52">"Data Compression Explained"</a><span class="reference-accessdate">. Retrieved 2013-11-13</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.aufirst=Matt&amp;rft.aulast=Mahoney&amp;rft.au=Mahoney%2C+Matt&amp;rft.btitle=Data+Compression+Explained&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fmattmahoney.net%2Fdc%2Fdce.html%23Section_52&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-7">^</a></b></span> <span class="reference-text"><span class="citation web">Collin, Lasse; Pavlov, Igor. <a rel="nofollow" class="external text" href="https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/lib/xz/xz_dec_lzma2.c">"lib/xz/xz_dec_lzma2.c"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Collin%2C+Lasse&amp;rft.aufirst=Lasse&amp;rft.aulast=Collin&amp;rft.au=Pavlov%2C+Igor&amp;rft.btitle=lib%2Fxz%2Fxz_dec_lzma2.c&amp;rft.genre=book&amp;rft_id=https%3A%2F%2Fgit.kernel.org%2Fcgit%2Flinux%2Fkernel%2Fgit%2Ftorvalds%2Flinux.git%2Ftree%2Flib%2Fxz%2Fxz_dec_lzma2.c&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><b><a href="#cite_ref-8">^</a></b></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://tukaani.org/xz/xz-file-format.txt">"The .xz File Format"</a>. 2009-08-27<span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.btitle=The+.xz+File+Format&amp;rft.date=2009-08-27&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Ftukaani.org%2Fxz%2Fxz-file-format.txt&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><b><a href="#cite_ref-9">^</a></b></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://git.tukaani.org/?p=xz-java.git;a=tree;f=src/org/tukaani/xz/lzma">"XZ in Java"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.btitle=XZ+in+Java&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fgit.tukaani.org%2F%3Fp%3Dxz-java.git%3Ba%3Dtree%3Bf%3Dsrc%2Forg%2Ftukaani%2Fxz%2Flzma&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-solomon-10"><span class="mw-cite-backlink">^ <a href="#cite_ref-solomon_10-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-solomon_10-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><span class="citation book">Solomon, David (2006-12-19). <i>Data Compression: The Complete Reference</i> (4 ed.). <a href="/wiki/Springer_Publishing" title="Springer Publishing">Springer Publishing</a>. p.&#160;245. <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-1846286025" title="Special:BookSources/978-1846286025">978-1846286025</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.aufirst=David&amp;rft.aulast=Solomon&amp;rft.au=Solomon%2C+David&amp;rft.btitle=Data+Compression%3A+The+Complete+Reference&amp;rft.date=2006-12-19&amp;rft.edition=4&amp;rft.genre=book&amp;rft.isbn=978-1846286025&amp;rft.pages=245&amp;rft.pub=Springer+Publishing&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><b><a href="#cite_ref-11">^</a></b></span> <span class="reference-text"><span class="citation web">Collin, Lasse; Pavlov, Igor. <a rel="nofollow" class="external text" href="http://git.tukaani.org/?p=xz-java.git;a=blob;f=src/org/tukaani/xz/lzma/LZMAEncoderFast.java">"LZMAEncoderFast.java"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Collin%2C+Lasse&amp;rft.aufirst=Lasse&amp;rft.aulast=Collin&amp;rft.au=Pavlov%2C+Igor&amp;rft.btitle=LZMAEncoderFast.java&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fgit.tukaani.org%2F%3Fp%3Dxz-java.git%3Ba%3Dblob%3Bf%3Dsrc%2Forg%2Ftukaani%2Fxz%2Flzma%2FLZMAEncoderFast.java&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-12"><span class="mw-cite-backlink"><b><a href="#cite_ref-12">^</a></b></span> <span class="reference-text"><span class="citation web">Collin, Lasse; Pavlov, Igor. <a rel="nofollow" class="external text" href="http://git.tukaani.org/?p=xz-java.git;a=blob;f=src/org/tukaani/xz/lzma/LZMAEncoderNormal.java">"LZMAEncoderNormal.java"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Collin%2C+Lasse&amp;rft.aufirst=Lasse&amp;rft.aulast=Collin&amp;rft.au=Pavlov%2C+Igor&amp;rft.btitle=LZMAEncoderNormal.java&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fgit.tukaani.org%2F%3Fp%3Dxz-java.git%3Ba%3Dblob%3Bf%3Dsrc%2Forg%2Ftukaani%2Fxz%2Flzma%2FLZMAEncoderNormal.java&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-13"><span class="mw-cite-backlink"><b><a href="#cite_ref-13">^</a></b></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://www.jrsoftware.org/ishelp/index.php?topic=setup_compression">"Inno Setup Help"</a>. jrsoftware.org<span class="reference-accessdate">. Retrieved 2013-06-16</span>. "LZMA2 is a modified version of LZMA that offers a better compression ratio for uncompressible data (random data expands about 0.005%, compared to 1.35% with original LZMA), and optionally can compress multiple parts of large files in parallel, greatly increasing compression speed but with a possible reduction in compression ratio."</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.btitle=Inno+Setup+Help&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.jrsoftware.org%2Fishelp%2Findex.php%3Ftopic%3Dsetup_compression&amp;rft.pub=jrsoftware.org&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-14"><span class="mw-cite-backlink"><b><a href="#cite_ref-14">^</a></b></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://www.7-zip.org/history.txt">"HISTORY of the 7-Zip"</a>. 2012-10-26<span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.btitle=HISTORY+of+the+7-Zip&amp;rft.date=2012-10-26&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.7-zip.org%2Fhistory.txt&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-15"><span class="mw-cite-backlink"><b><a href="#cite_ref-15">^</a></b></span> <span class="reference-text"><span class="citation web">Bauch, Joachim (2010-04-07). <a rel="nofollow" class="external text" href="http://www.joachim-bauch.de/projects/pylzma/">"PyLZMA - Platform independent python bindings for the LZMA compression library."</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Bauch%2C+Joachim&amp;rft.aufirst=Joachim&amp;rft.aulast=Bauch&amp;rft.btitle=PyLZMA+-+Platform+independent+python+bindings+for+the+LZMA+compression+library.&amp;rft.date=2010-04-07&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.joachim-bauch.de%2Fprojects%2Fpylzma%2F&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-16"><span class="mw-cite-backlink"><b><a href="#cite_ref-16">^</a></b></span> <span class="reference-text"><span class="citation web">Birtles, Alan (2006-06-13). <a rel="nofollow" class="external text" href="http://www.birtles.org.uk/programming">"Programming Help: Pascal LZMA SDK"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.au=Birtles%2C+Alan&amp;rft.aufirst=Alan&amp;rft.aulast=Birtles&amp;rft.btitle=Programming+Help%3A+Pascal+LZMA+SDK&amp;rft.date=2006-06-13&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.birtles.org.uk%2Fprogramming&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-17"><span class="mw-cite-backlink"><b><a href="#cite_ref-17">^</a></b></span> <span class="reference-text"><span class="citation web">Vieru, Andrei (2012-06-28). <a rel="nofollow" class="external text" href="http://lzma.googlecode.com/">"compress/lzma package for Go 1"</a><span class="reference-accessdate">. Retrieved 2013-06-16</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ALempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;rft.aufirst=Andrei&amp;rft.aulast=Vieru&amp;rft.au=Vieru%2C+Andrei&amp;rft.btitle=compress%2Flzma+package+for+Go+1&amp;rft.date=2012-06-28&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Flzma.googlecode.com%2F&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+</ol>
+</div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit&amp;section=24" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://www.7-zip.org/">Official home page</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.nongnu.org/lzip/manual/lzip_manual.html#File-format">Lzip format specification</a></li>
+<li><a rel="nofollow" class="external text" href="http://tukaani.org/xz/format.html">XZ format specification</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.7-zip.org/sdk.html">LZMA SDK (Software Development Kit)</a></li>
+<li><a rel="nofollow" class="external text" href="http://tukaani.org/xz">LZMA Utils = XZ Utils</a></li>
+<li><a rel="nofollow" class="external text" href="http://nullprogram.com/blog/2010/04/16/">Windows Binaries for XZ Utils</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.unet.univie.ac.at/~a0503736/php/drdoswiki/index.php?n=Main.Compress">Data compression, Compressors &amp; Archivers</a></li>
+</ul>
+<table cellspacing="0" class="navbox" style="border-spacing:0;">
+<tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Archive_formats" title="Template:Archive formats"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Archive_formats" title="Template talk:Archive formats"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Archive_formats&amp;action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<div style="font-size:110%;"><a href="/wiki/Archive_format" title="Archive format" class="mw-redirect">Archive formats</a></div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Archiving only</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Ar_(Unix)" title="Ar (Unix)">ar</a></li>
+<li><a href="/wiki/Cpio" title="Cpio">cpio</a></li>
+<li><a href="/wiki/Shar" title="Shar">shar</a></li>
+<li><a href="/wiki/Tar_(computing)" title="Tar (computing)">tar</a></li>
+<li><a href="/wiki/LBR_(file_format)" title="LBR (file format)">LBR</a></li>
+<li><a href="/wiki/BagIt" title="BagIt">BagIt</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Compression only</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Bzip2" title="Bzip2">bzip2</a></li>
+<li><a href="/wiki/Gzip" title="Gzip">gzip</a></li>
+<li><a href="/wiki/Lzip" title="Lzip">lzip</a></li>
+<li><a href="/wiki/LZMA" title="LZMA" class="mw-redirect">LZMA</a></li>
+<li><a href="/wiki/Lzop" title="Lzop">lzop</a></li>
+<li><a href="/wiki/Xz" title="Xz">xz</a></li>
+<li><a href="/wiki/SQ_(program)" title="SQ (program)">SQ</a></li>
+<li><a href="/wiki/Compress" title="Compress">compress</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Archiving and compression</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/7z" title="7z">7z</a></li>
+<li><a href="/wiki/ACE_(file_format)" title="ACE (file format)">ACE</a></li>
+<li><a href="/wiki/ARC_(file_format)" title="ARC (file format)">ARC</a></li>
+<li><a href="/wiki/ARJ" title="ARJ">ARJ</a></li>
+<li><a href="/wiki/Cabinet_(file_format)" title="Cabinet (file format)">Cabinet</a></li>
+<li><a href="/wiki/CFS_(file_format)" title="CFS (file format)">cfs</a></li>
+<li><a href="/wiki/Compact_Pro" title="Compact Pro">cpt</a></li>
+<li><a href="/wiki/DGCA_(Computing)" title="DGCA (Computing)" class="mw-redirect">DGCA</a></li>
+<li><a href="/wiki/Apple_Disk_Image" title="Apple Disk Image">.dmg</a></li>
+<li><a href="/wiki/EGG_(file_format)" title="EGG (file format)" class="mw-redirect">.egg</a></li>
+<li><a href="/wiki/GCA_(file_format)" title="GCA (file format)">GCA</a></li>
+<li><a href="/wiki/KGB_Archiver" title="KGB Archiver">kgb</a></li>
+<li><a href="/wiki/LHA_(file_format)" title="LHA (file format)">LHA</a></li>
+<li><a href="/wiki/LZX_(algorithm)" title="LZX (algorithm)">LZX</a></li>
+<li><a href="/wiki/MPQ" title="MPQ">MPQ</a></li>
+<li><a href="/wiki/PEA_(file_format)" title="PEA (file format)" class="mw-redirect">PEA</a></li>
+<li><a href="/wiki/Quadruple_D" title="Quadruple D">qda</a></li>
+<li><a href="/wiki/RAR" title="RAR">RAR</a></li>
+<li><a href="/wiki/Rzip" title="Rzip">rzip</a></li>
+<li><a href="/wiki/StuffIt" title="StuffIt">sit</a></li>
+<li><a href="/wiki/SQX" title="SQX">SQX</a></li>
+<li><a href="/wiki/PAQ" title="PAQ">UDA</a></li>
+<li><a href="/wiki/UHARC" title="UHARC">UHARC</a></li>
+<li><a href="/wiki/Xar_(archiver)" title="Xar (archiver)">Xar</a></li>
+<li><a href="/wiki/Zoo_(file_format)" title="Zoo (file format)">zoo</a></li>
+<li><a href="/wiki/Zip_(file_format)" title="Zip (file format)">ZIP</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Software packaging and distribution</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/APK_(file_format)" title="APK (file format)">APK</a></li>
+<li><a href="/wiki/Deb_(file_format)" title="Deb (file format)">deb</a></li>
+<li><a href="/wiki/Installer_(OS_X)" title="Installer (OS X)">pkg (OS X)</a></li>
+<li><a href="/wiki/RPM_Package_Manager" title="RPM Package Manager">RPM</a></li>
+<li><a href="/wiki/Super_OS#Software_repository" title="Super OS">RUNZ</a></li>
+<li><a href="/wiki/Windows_Installer" title="Windows Installer">MSI</a></li>
+<li><a href="/wiki/JAR_(file_format)" title="JAR (file format)">JAR</a>
+<ul>
+<li><small><a href="/wiki/WAR_file_format_(Sun)" title="WAR file format (Sun)">WAR</a></small></li>
+<li><small><a href="/wiki/Resource_Adapter" title="Resource Adapter" class="mw-redirect">RAR (Java)</a></small></li>
+<li><small><a href="/wiki/EAR_(file_format)" title="EAR (file format)">EAR</a></small></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Document packaging and distribution</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Open_eBook" title="Open eBook">OEB Package Format</a></li>
+<li><a href="/wiki/EPUB" title="EPUB">OEBPS Container Format</a></li>
+<li><a href="/wiki/Open_Packaging_Conventions" title="Open Packaging Conventions">Open Packaging Conventions</a></li>
+<li><a href="/wiki/PAQ" title="PAQ">PAQ</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>
+<ul>
+<li><img alt="Non-article page" src="//upload.wikimedia.org/wikipedia/en/thumb/8/89/Symbol_neutral_vote.svg/16px-Symbol_neutral_vote.svg.png" width="16" height="16" srcset="//upload.wikimedia.org/wikipedia/en/thumb/8/89/Symbol_neutral_vote.svg/24px-Symbol_neutral_vote.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/8/89/Symbol_neutral_vote.svg/32px-Symbol_neutral_vote.svg.png 2x" /><b><a href="/wiki/Comparison_of_archive_formats" title="Comparison of archive formats">Comparison</a></b>
+<ul>
+<li><a href="/wiki/File_format#Identifying_the_type_of_a_file" title="File format">type</a></li>
+</ul>
+</li>
+<li><img alt="List-Class article" src="//upload.wikimedia.org/wikipedia/en/thumb/d/db/Symbol_list_class.svg/16px-Symbol_list_class.svg.png" width="16" height="16" srcset="//upload.wikimedia.org/wikipedia/en/thumb/d/db/Symbol_list_class.svg/24px-Symbol_list_class.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/d/db/Symbol_list_class.svg/32px-Symbol_list_class.svg.png 2x" /><b><a href="/wiki/List_of_archive_formats" title="List of archive formats">List</a></b></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table cellspacing="0" class="navbox" style="border-spacing:0;">
+<tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Compression_methods" title="Template:Compression methods"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Compression_methods" title="Template talk:Compression methods"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Compression_methods&amp;action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<div style="font-size:110%;"><a href="/wiki/Data_compression" title="Data compression">Data compression</a> methods</div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Information_theory" title="Information theory">Information theory</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Entropy_(information_theory)" title="Entropy (information theory)">Entropy</a></li>
+<li><a href="/wiki/Kolmogorov_complexity" title="Kolmogorov complexity">Kolmogorov complexity</a></li>
+<li><a href="/wiki/Lossy_compression" title="Lossy compression">Lossy</a></li>
+<li><a href="/wiki/Quantization_(signal_processing)" title="Quantization (signal processing)">Quantization</a></li>
+<li><a href="/wiki/Rate%E2%80%93distortion_theory" title="Rate–distortion theory">Rate–distortion theory</a></li>
+<li><a href="/wiki/Redundancy_(information_theory)" title="Redundancy (information theory)">Redundancy</a></li>
+<li><a href="/wiki/Timeline_of_information_theory" title="Timeline of information theory">Timeline of information theory</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Lossless_compression" title="Lossless compression">Lossless</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Entropy_encoding" title="Entropy encoding">Entropy encoding</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Unary_coding" title="Unary coding">Unary</a></li>
+<li><a href="/wiki/Arithmetic_coding" title="Arithmetic coding">Arithmetic</a></li>
+<li><a href="/wiki/Golomb_coding" title="Golomb coding">Golomb</a></li>
+<li><a href="/wiki/Huffman_coding" title="Huffman coding">Huffman</a>
+<ul>
+<li><a href="/wiki/Adaptive_Huffman_coding" title="Adaptive Huffman coding">Adaptive</a></li>
+<li><a href="/wiki/Canonical_Huffman_code" title="Canonical Huffman code">Canonical</a></li>
+<li><a href="/wiki/Modified_Huffman_coding" title="Modified Huffman coding">Modified</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Range_encoding" title="Range encoding">Range</a></li>
+<li><a href="/wiki/Shannon%E2%80%93Fano_coding" title="Shannon–Fano coding">Shannon–Fano</a></li>
+<li><a href="/wiki/Shannon%E2%80%93Fano%E2%80%93Elias_coding" title="Shannon–Fano–Elias coding">Shannon–Fano–Elias</a></li>
+<li><a href="/wiki/Tunstall_coding" title="Tunstall coding">Tunstall</a></li>
+<li><a href="/wiki/Universal_code_(data_compression)" title="Universal code (data compression)">Universal</a>
+<ul>
+<li><a href="/wiki/Exponential-Golomb_coding" title="Exponential-Golomb coding">Exp-Golomb</a></li>
+<li><a href="/wiki/Fibonacci_coding" title="Fibonacci coding">Fibonacci</a></li>
+<li><a href="/wiki/Elias_gamma_coding" title="Elias gamma coding">Gamma</a></li>
+<li><a href="/wiki/Levenshtein_coding" title="Levenshtein coding">Levenshtein</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Dictionary_coder" title="Dictionary coder">Dictionary</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Byte_pair_encoding" title="Byte pair encoding">Byte pair encoding</a></li>
+<li><a href="/wiki/DEFLATE" title="DEFLATE">DEFLATE</a></li>
+<li>Lempel–Ziv
+<ul>
+<li><a href="/wiki/LZ77_and_LZ78" title="LZ77 and LZ78">LZ77 and LZ78</a></li>
+<li><a href="/wiki/LZJB" title="LZJB">LZJB</a></li>
+<li><strong class="selflink">LZMA</strong></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Oberhumer" title="Lempel–Ziv–Oberhumer">LZO</a></li>
+<li><a href="/wiki/LZRW" title="LZRW">LZRW</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Stac" title="Lempel–Ziv–Stac">LZS</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski" title="Lempel–Ziv–Storer–Szymanski">LZSS</a></li>
+<li><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Tamayo&amp;action=edit&amp;redlink=1" class="new" title="Lempel–Ziv–Tamayo (page does not exist)">LZT</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch" title="Lempel–Ziv–Welch">LZW</a></li>
+<li><a href="/wiki/LZWL" title="LZWL">LZWL</a></li>
+<li><a href="/wiki/LZX_(algorithm)" title="LZX (algorithm)">LZX</a></li>
+<li><a href="/wiki/LZ4_(compression_algorithm)" title="LZ4 (compression algorithm)">LZ4</a></li>
+<li><a href="/w/index.php?title=Reduced_Offset_Lempel_Ziv&amp;action=edit&amp;redlink=1" class="new" title="Reduced Offset Lempel Ziv (page does not exist)">ROLZ</a></li>
+<li><a href="/wiki/Statistical_Lempel_Ziv" title="Statistical Lempel Ziv">Statistical Lempel Ziv</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">RLE</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Burrows%E2%80%93Wheeler_transform" title="Burrows–Wheeler transform">BWT</a></li>
+<li><a href="/wiki/Context_tree_weighting" title="Context tree weighting">CTW</a></li>
+<li><a href="/wiki/Delta_encoding" title="Delta encoding">Delta</a></li>
+<li><a href="/wiki/Dynamic_Markov_compression" title="Dynamic Markov compression">DMC</a></li>
+<li><a href="/wiki/Move-to-front_transform" title="Move-to-front transform">MTF</a></li>
+<li><a href="/wiki/Prediction_by_partial_matching" title="Prediction by partial matching">PPM</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Audio_compression_(data)" title="Audio compression (data)" class="mw-redirect">Audio</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Acoustics" title="Acoustics">Theory</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Companding" title="Companding">Companding</a></li>
+<li><a href="/wiki/Convolution" title="Convolution">Convolution</a></li>
+<li><a href="/wiki/Dynamic_range" title="Dynamic range">Dynamic range</a></li>
+<li><a href="/wiki/Latency_(audio)" title="Latency (audio)">Latency</a></li>
+<li><a href="/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" title="Nyquist–Shannon sampling theorem">Nyquist–Shannon theorem</a></li>
+<li><a href="/wiki/Sampling_(signal_processing)" title="Sampling (signal processing)">Sampling</a></li>
+<li><a href="/wiki/Sound_quality" title="Sound quality">Sound quality</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Audio_codec" title="Audio codec">Audio codec</a> parts</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/A-law_algorithm" title="A-law algorithm">A-law</a></li>
+<li><a href="/wiki/%CE%9C-law_algorithm" title="?-law algorithm">µ-law</a></li>
+<li><a href="/wiki/Algebraic_code-excited_linear_prediction" title="Algebraic code-excited linear prediction">ACELP</a></li>
+<li><a href="/wiki/Adaptive_differential_pulse-code_modulation" title="Adaptive differential pulse-code modulation">ADPCM</a></li>
+<li><a href="/wiki/Code-excited_linear_prediction" title="Code-excited linear prediction">CELP</a></li>
+<li><a href="/wiki/Differential_pulse-code_modulation" title="Differential pulse-code modulation">DPCM</a></li>
+<li><a href="/wiki/Fourier_transform" title="Fourier transform">Fourier transform</a></li>
+<li><a href="/wiki/Linear_predictive_coding" title="Linear predictive coding">LPC</a>
+<ul>
+<li><a href="/wiki/Log_area_ratio" title="Log area ratio">LAR</a></li>
+<li><a href="/wiki/Line_spectral_pairs" title="Line spectral pairs">LSP</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Modified_discrete_cosine_transform" title="Modified discrete cosine transform">MDCT</a></li>
+<li><a href="/wiki/Psychoacoustics" title="Psychoacoustics">Psychoacoustic model</a></li>
+<li><a href="/wiki/Warped_linear_predictive_coding" title="Warped linear predictive coding">WLPC</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Bit_rate" title="Bit rate">Bit rate</a>
+<ul>
+<li><a href="/wiki/Average_bitrate" title="Average bitrate">ABR</a></li>
+<li><a href="/wiki/Constant_bitrate" title="Constant bitrate">CBR</a></li>
+<li><a href="/wiki/Variable_bitrate" title="Variable bitrate">VBR</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Speech_coding" title="Speech coding">Speech coding</a></li>
+<li><a href="/wiki/Sub-band_coding" title="Sub-band coding">Sub-band coding</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Image_compression" title="Image compression">Image</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Terms</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Chroma_subsampling" title="Chroma subsampling">Chroma subsampling</a></li>
+<li><a href="/wiki/Color_space" title="Color space">Color space</a></li>
+<li><a href="/wiki/Compression_artifact" title="Compression artifact">Compression artifact</a></li>
+<li><a href="/wiki/Image_resolution" title="Image resolution">Image resolution</a></li>
+<li><a href="/wiki/Macroblock" title="Macroblock">Macroblock</a></li>
+<li><a href="/wiki/Pixel" title="Pixel">Pixel</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Methods</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Chain_code" title="Chain code">Chain code</a></li>
+<li><a href="/wiki/Discrete_cosine_transform" title="Discrete cosine transform">DCT</a></li>
+<li><a href="/wiki/Embedded_Zerotrees_of_Wavelet_transforms" title="Embedded Zerotrees of Wavelet transforms">EZW</a></li>
+<li><a href="/wiki/Fractal_compression" title="Fractal compression">Fractal</a></li>
+<li><a href="/wiki/Karhunen%E2%80%93Lo%C3%A8ve_theorem" title="Karhunen–Loève theorem">KLT</a></li>
+<li><a href="/wiki/Pyramid_(image_processing)" title="Pyramid (image processing)">LP</a></li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">RLE</a></li>
+<li><a href="/wiki/Set_partitioning_in_hierarchical_trees" title="Set partitioning in hierarchical trees">SPIHT</a></li>
+<li><a href="/wiki/Wavelet_compression" title="Wavelet compression" class="mw-redirect">Wavelet</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Peak_signal-to-noise_ratio" title="Peak signal-to-noise ratio">PSNR quality measure</a></li>
+<li><a href="/wiki/Quantization_(image_processing)" title="Quantization (image processing)">Quantization</a></li>
+<li><a href="/wiki/Standard_test_image" title="Standard test image">Test images</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Video_compression" title="Video compression" class="mw-redirect">Video</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Terms</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Display_resolution" title="Display resolution">Display resolution</a></li>
+<li><a href="/wiki/Film_frame" title="Film frame">Frame</a></li>
+<li><a href="/wiki/Frame_rate" title="Frame rate">Frame rate</a></li>
+<li><a href="/wiki/Video_compression_picture_types" title="Video compression picture types">Frame types</a></li>
+<li><a href="/wiki/Interlaced_video" title="Interlaced video">Interlace</a></li>
+<li><a href="/wiki/Video#Characteristics_of_video_streams" title="Video">Video characteristics</a></li>
+<li><a href="/wiki/Video_quality" title="Video quality">Video quality</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Video_codec" title="Video codec">Video codec parts</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Discrete_cosine_transform" title="Discrete cosine transform">DCT</a></li>
+<li><a href="/wiki/Deblocking_filter" title="Deblocking filter">Deblocking filter</a></li>
+<li><a href="/wiki/Motion_compensation" title="Motion compensation">Motion compensation</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Bit_rate" title="Bit rate">Bit rate</a>
+<ul>
+<li><a href="/wiki/Average_bitrate" title="Average bitrate">ABR</a></li>
+<li><a href="/wiki/Constant_bitrate" title="Constant bitrate">CBR</a></li>
+<li><a href="/wiki/Variable_bitrate" title="Variable bitrate">VBR</a></li>
+</ul>
+</li>
+<li><a href="/wiki/List_of_codecs#Lossless_compression" title="List of codecs">Lossless compressed</a></li>
+<li><a href="/wiki/Uncompressed_video" title="Uncompressed video">Uncompressed</a></li>
+<li><a href="/wiki/Video_codec" title="Video codec">Video codecs</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>See <a href="/wiki/Template:Compression_formats" title="Template:Compression formats">Compression formats</a> for formats and <a href="/wiki/Template:Compression_software" title="Template:Compression software">Compression software</a> for codecs</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1162
+CPU time usage: 0.904 seconds
+Real time usage: 1.005 seconds
+Preprocessor visited node count: 1827/1000000
+Preprocessor generated node count: 7207/1500000
+Post-expand include size: 100757/2048000 bytes
+Template argument size: 1259/2048000 bytes
+Highest expansion depth: 11/40
+Expensive parser function count: 10/500
+Lua time usage: 0.135s
+Lua memory usage: 2.6 MB
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:359380-0!*!0!!en!4!* and timestamp 20131220212708
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>								<div class="printfooter">
+				Retrieved from "<a href="http://en.wikipedia.org/w/index.php?title=Lempel–Ziv–Markov_chain_algorithm&amp;oldid=582788436">http://en.wikipedia.org/w/index.php?title=Lempel–Ziv–Markov_chain_algorithm&amp;oldid=582788436</a>"				</div>
+												<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Lossless_compression_algorithms" title="Category:Lossless compression algorithms">Lossless compression algorithms</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Articles_needing_additional_references_from_July_2010" title="Category:Articles needing additional references from July 2010">Articles needing additional references from July 2010</a></li><li><a href="/wiki/Category:All_articles_needing_additional_references" title="Category:All articles needing additional references">All articles needing additional references</a></li><li><a href="/wiki/Category:All_articles_with_unsourced_statements" title="Category:All articles with unsourced statements">All articles with unsourced statements</a></li><li><a href="/wiki/Category:Articles_with_unsourced_statements_from_June_2013" title="Category:Articles with unsourced statements from June 2013">Articles with unsourced statements from June 2013</a></li><li><a href="/wiki/Category:Articles_that_may_contain_original_research_from_April_2012" title="Category:Articles that may contain original research from April 2012">Articles that may contain original research from April 2012</a></li><li><a href="/wiki/Category:All_articles_that_may_contain_original_research" title="Category:All articles that may contain original research">All articles that may contain original research</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+				<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+	<h3 id="p-personal-label">Personal tools</h3>
+	<ul>
+<li id="pt-createaccount"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Lempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;type=signup">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Lempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>	</ul>
+</div>
+				<div id="left-navigation">
+					<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+	<h3 id="p-namespaces-label">Namespaces</h3>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+					<li  id="ca-talk"><span><a href="/wiki/Talk:Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm"  title="Discussion about the content page [t]" accesskey="t">Talk</a></span></li>
+			</ul>
+</div>
+<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+	<h3 id="mw-vector-current-variant">
+		</h3>
+	<h3 id="p-variants-label"><span>Variants</span><a href="#"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+				</div>
+				<div id="right-navigation">
+					<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+	<h3 id="p-views-label">Views</h3>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" >Read</a></span></li>
+					<li id="ca-edit"><span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=edit"  title="You can edit this page. &#10;Please review your changes before saving. [e]" accesskey="e">Edit</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=history"  title="Past versions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+	<h3 id="p-cactions-label"><span>Actions</span><a href="#"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+<div id="p-search" role="search">
+	<h3><label for="searchInput">Search</label></h3>
+	<form action="/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input name="search" placeholder="Search" title="Search Wikipedia [f]" accesskey="f" id="searchInput" />						<button type="submit" name="button" title="Search Wikipedia for this text" id="searchButton"><img src="//bits.wikimedia.org/static-1.23wmf7/skins/vector/images/search-ltr.png?303-4" alt="Search" width="12" height="13" /></button>								<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+				</div>
+			</div>
+			<div id="mw-panel">
+					<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+				<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+	<h3 id='p-navigation-label'>Navigation</h3>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+			<li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+			<li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li>
+			<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+	<h3 id='p-interaction-label'>Interaction</h3>
+	<div class="body">
+		<ul>
+			<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+			<li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+			<li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+	<h3 id='p-tb-label'>Tools</h3>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li>
+			<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-permalink"><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;oldid=582788436" title="Permanent link to this revision of the page">Permanent link</a></li>
+			<li id="t-info"><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;action=info">Page information</a></li>
+			<li id="t-wikibase"><a href="//www.wikidata.org/wiki/Q2733" title="Link to connected data repository item [g]" accesskey="g">Data item</a></li>
+<li id="t-cite"><a href="/w/index.php?title=Special:Cite&amp;page=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;id=582788436" title="Information on how to cite this page">Cite this page</a></li>		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+	<h3 id='p-coll-print_export-label'>Print/export</h3>
+	<div class="body">
+		<ul>
+			<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Lempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm">Create a book</a></li>
+			<li id="coll-download-as-rl"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Lempel%E2%80%93Ziv%E2%80%93Markov+chain+algorithm&amp;oldid=582788436&amp;writer=rl">Download as PDF</a></li>
+			<li id="t-print"><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+	<h3 id='p-lang-label'>Languages</h3>
+	<div class="body">
+		<ul>
+			<li class="interlanguage-link interwiki-bg"><a href="//bg.wikipedia.org/wiki/LZMA" title="LZMA – Bulgarian" lang="bg" hreflang="bg">?????????</a></li>
+			<li class="interlanguage-link interwiki-ca"><a href="//ca.wikipedia.org/wiki/LZMA" title="LZMA – Catalan" lang="ca" hreflang="ca">Català</a></li>
+			<li class="interlanguage-link interwiki-cs"><a href="//cs.wikipedia.org/wiki/LZMA" title="LZMA – Czech" lang="cs" hreflang="cs">Ceština</a></li>
+			<li class="interlanguage-link interwiki-de"><a href="//de.wikipedia.org/wiki/Lempel-Ziv-Markow-Algorithmus" title="Lempel-Ziv-Markow-Algorithmus – German" lang="de" hreflang="de">Deutsch</a></li>
+			<li class="interlanguage-link interwiki-es"><a href="//es.wikipedia.org/wiki/LZMA" title="LZMA – Spanish" lang="es" hreflang="es">Español</a></li>
+			<li class="interlanguage-link interwiki-fr"><a href="//fr.wikipedia.org/wiki/LZMA" title="LZMA – French" lang="fr" hreflang="fr">Français</a></li>
+			<li class="interlanguage-link interwiki-ko"><a href="//ko.wikipedia.org/wiki/LZMA" title="LZMA – Korean" lang="ko" hreflang="ko">???</a></li>
+			<li class="interlanguage-link interwiki-it"><a href="//it.wikipedia.org/wiki/Algoritmo_Lempel-Ziv-Markov" title="Algoritmo Lempel-Ziv-Markov – Italian" lang="it" hreflang="it">Italiano</a></li>
+			<li class="interlanguage-link interwiki-hu"><a href="//hu.wikipedia.org/wiki/LZMA" title="LZMA – Hungarian" lang="hu" hreflang="hu">Magyar</a></li>
+			<li class="interlanguage-link interwiki-ja"><a href="//ja.wikipedia.org/wiki/LZMA" title="LZMA – Japanese" lang="ja" hreflang="ja">???</a></li>
+			<li class="interlanguage-link interwiki-oc"><a href="//oc.wikipedia.org/wiki/LZMA" title="LZMA – Occitan" lang="oc" hreflang="oc">Occitan</a></li>
+			<li class="interlanguage-link interwiki-pl"><a href="//pl.wikipedia.org/wiki/LZMA" title="LZMA – Polish" lang="pl" hreflang="pl">Polski</a></li>
+			<li class="interlanguage-link interwiki-pt"><a href="//pt.wikipedia.org/wiki/LZMA" title="LZMA – Portuguese" lang="pt" hreflang="pt">Português</a></li>
+			<li class="interlanguage-link interwiki-ru"><a href="//ru.wikipedia.org/wiki/LZMA" title="LZMA – Russian" lang="ru" hreflang="ru">???????</a></li>
+			<li class="interlanguage-link interwiki-sl"><a href="//sl.wikipedia.org/wiki/LZMA" title="LZMA – Slovenian" lang="sl" hreflang="sl">Slovenšcina</a></li>
+			<li class="interlanguage-link interwiki-sv"><a href="//sv.wikipedia.org/wiki/LZMA" title="LZMA – Swedish" lang="sv" hreflang="sv">Svenska</a></li>
+			<li class="interlanguage-link interwiki-zh"><a href="//zh.wikipedia.org/wiki/LZMA" title="LZMA – Chinese" lang="zh" hreflang="zh">??</a></li>
+			<li class="uls-p-lang-dummy"><a href="#"></a></li>
+			<li class="wbc-editpage"><a href="//www.wikidata.org/wiki/Q2733#sitelinks-wikipedia" title="Edit interlanguage links">Edit links</a></li>
+		</ul>
+	</div>
+</div>
+			</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 22 November 2013 at 08:00.<br /></li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy.</a> <br/>
+Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a class="external" href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="//wikimediafoundation.org/"><img src="//bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="//bits.wikimedia.org/static-1.23wmf7/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.cite","mobile.desktop","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","mw.MwEmbedSupport.style","ext.articleFeedbackv5.startup","ext.wikimediaEvents.moduleStorage","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","mw.PopUpMediaTransform","skins.vector.collapsibleNav"],null,true);
+}</script>
+<script src="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<!-- Served by mw1094 in 0.249 secs. -->
+	</body>
+</html>

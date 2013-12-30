@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" /><title>Arithmetic coding - Wikipedia, the free encyclopedia</title>
+<meta name="generator" content="MediaWiki 1.23wmf7" />
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Arithmetic_coding&amp;action=edit" />
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Arithmetic_coding&amp;action=edit" />
+<link rel="apple-touch-icon" href="//bits.wikimedia.org/apple-touch/wikipedia.png" />
+<link rel="shortcut icon" href="//bits.wikimedia.org/favicon/wikipedia.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd" />
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="canonical" href="http://en.wikipedia.org/wiki/Arithmetic_coding" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=ext.gadget.DRN-wizard%2CReferenceTooltips%2Ccharinsert%2Cteahouse%7Cext.rtlcite%2Cwikihiero%7Cext.uls.nojs%7Cext.visualEditor.viewPageTarget.noscript%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmw.PopUpMediaTransform%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" />
+<meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */</style>
+
+<script src="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Arithmetic_coding","wgTitle":"Arithmetic coding","wgCurRevisionId":586462543,"wgRevisionId":586462543,"wgArticleId":62545,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Use dmy dates from July 2013","Pages containing cite templates with deprecated parameters","Lossless compression algorithms"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Arithmetic_coding","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgArticleFeedbackv5Permissions":{"aft-reader":true,"aft-member":false,"aft-editor":false,"aft-monitor":false,"aft-administrator":false,"aft-oversighter":false,"aft-noone":false},"wgBetaFeaturesFeatures":[],"wgVisualEditor":{"isPageWatched":false,"magnifyClipIconURL":"//bits.wikimedia.org/static-1.23wmf7/skins/common/images/magnify-clip.png","pageLanguageCode":"en","pageLanguageDir":"ltr"},"wikilove-recipient":"","wikilove-anon":0,"wgGuidedTourHelpGuiderUrl":"Help:Guided tours/guider","wgULSAcceptLanguageList":["en-us","en"],"wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","Geo":{"city":"","country":""},"wgNoticeProject":"wikipedia","aftv5Article":{"id":62545,"title":"Arithmetic coding","namespace":0,"categories":["Lossless compression algorithms","Pages containing cite templates with deprecated parameters","Use dmy dates from July 2013"],"permissionLevel":false},"wgWikibaseItemId":"Q2651"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":0,"minordefault":0,"newpageshidepatrolled":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"vector-simplesearch":1,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,
+"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"useeditwarning":1,"prefershttps":1,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"aftv5-last-filter":null,"visualeditor-enable":0,"visualeditor-enable-experimental":0,"visualeditor-enable-mwmath":0,"visualeditor-betatempdisable":0,"wikilove-enabled":1,"echo-subscriptions-web-page-review":true,"echo-subscriptions-email-page-review":false,"ep_showtoplink":false,"ep_bulkdelorgs":false,"ep_bulkdelcourses":true,"ep_showdyk":true,"echo-notify-show-link":true,"echo-show-alert":true,"echo-email-frequency":0,"echo-email-format":"html","echo-subscriptions-email-system":true,"echo-subscriptions-web-system":true,"echo-subscriptions-email-other":false,"echo-subscriptions-web-other":true,"echo-subscriptions-email-edit-user-talk":false,"echo-subscriptions-web-edit-user-talk":true,
+"echo-subscriptions-email-reverted":false,"echo-subscriptions-web-reverted":true,"echo-subscriptions-email-article-linked":false,"echo-subscriptions-web-article-linked":false,"echo-subscriptions-email-mention":false,"echo-subscriptions-web-mention":true,"echo-subscriptions-web-edit-thank":true,"echo-subscriptions-email-edit-thank":false,"gettingstarted-task-toolbar-show-intro":true,"uls-preferences":"","language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs108":false,"searchNs109":false,"searchNs118":false,"searchNs119":false
+,"searchNs446":false,"searchNs447":false,"searchNs710":false,"searchNs711":false,"searchNs828":false,"searchNs829":false,"gadget-teahouse":1,"gadget-ReferenceTooltips":1,"gadget-DRN-wizard":1,"gadget-charinsert":1,"gadget-mySandbox":1,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function(){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:087d2df5a674019c6b89dcf147ec9ae8 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","ext.visualEditor.viewPageTarget.init","ext.wikimediaShopLink.core","ext.uls.init","ext.uls.interface","wikibase.client.init","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script>
+<script src="//bits.wikimedia.org/geoiplookup"></script><link rel="dns-prefetch" href="//meta.wikimedia.org" /><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static-1.23wmf7/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Arithmetic_coding skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<div id="siteNotice"><!-- CentralNotice --></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Arithmetic coding</span></h1>
+			<div id="bodyContent">
+								<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>Arithmetic coding</b> is a form of <a href="/wiki/Entropy_encoding" title="Entropy encoding">entropy encoding</a> used in <a href="/wiki/Lossless_data_compression" title="Lossless data compression" class="mw-redirect">lossless data compression</a>. Normally, a string of characters such as the words "hello there" is represented using a fixed number of bits per character, as in the <a href="/wiki/American_Standard_Code_for_Information_Interchange" title="American Standard Code for Information Interchange" class="mw-redirect">ASCII</a> code. When a string is converted to arithmetic encoding, frequently used characters will be stored with fewer bits and not-so-frequently occurring characters will be stored with more bits, resulting in fewer bits used in total. Arithmetic coding differs from other forms of entropy encoding such as <a href="/wiki/Huffman_coding" title="Huffman coding">Huffman coding</a> in that rather than separating the input into component symbols and replacing each with a code, arithmetic coding encodes the entire message into a single number, a fraction <i>n</i> where (0.0 = <i>n</i> &lt; 1.0).</p>
+<div class="thumb tright">
+<div class="thumbinner" style="width:402px;"><a href="/wiki/File:Arithmetic_coding_example.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Arithmetic_coding_example.svg/400px-Arithmetic_coding_example.svg.png" width="400" height="283" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/82/Arithmetic_coding_example.svg/600px-Arithmetic_coding_example.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/82/Arithmetic_coding_example.svg/800px-Arithmetic_coding_example.svg.png 2x" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Arithmetic_coding_example.svg" class="internal" title="Enlarge"><img src="//bits.wikimedia.org/static-1.23wmf7/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+An arithmetic coding example assuming a fixed probability distribution of three Symbols "A","B" and "C". Probability of "A" is 50%, probability of "B" is 33% and probability of "C" is 17%. Furthermore we assume that the recursion depth is known in each step. In step one we code "B" which is inside the interval (0.5,0.83): The binary number "0.10x" is the shortest code that represents an Interval that is entirely inside [0.5,0.83). "x" means an arbitrary bit sequence. There are two extreme cases: the smallest x stands for an infinite number of zeros which represents the left side of the represented Interval. Then the left side of the Interval is dec(0.10)=0.5. The greatest x stands for an infinite number of ones which gives a number that converges towards dec(0.11)=0.75 Therefore "0.10x" represents the Interval [0.5,0.75) which is inside [0.5,0.83) Now we can leave out the "0." part since all Intervals begin with "0." and we can ignore the "x" part because no matter what Bit-sequence it represents, we will stay inside [0.5,0.75]</div>
+</div>
+</div>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Implementation_details_and_examples"><span class="tocnumber">1</span> <span class="toctext">Implementation details and examples</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Equal_probabilities"><span class="tocnumber">1.1</span> <span class="toctext">Equal probabilities</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Defining_a_model"><span class="tocnumber">1.2</span> <span class="toctext">Defining a model</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Encoding_and_decoding:_overview"><span class="tocnumber">1.3</span> <span class="toctext">Encoding and decoding: overview</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Encoding_and_decoding:_example"><span class="tocnumber">1.4</span> <span class="toctext">Encoding and decoding: example</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Sources_of_inefficiency"><span class="tocnumber">1.5</span> <span class="toctext">Sources of inefficiency</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Adaptive_arithmetic_coding"><span class="tocnumber">2</span> <span class="toctext">Adaptive arithmetic coding</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Precision_and_renormalization"><span class="tocnumber">3</span> <span class="toctext">Precision and renormalization</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Arithmetic_coding_as_a_generalized_change_of_radix"><span class="tocnumber">4</span> <span class="toctext">Arithmetic coding as a generalized change of radix</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#Theoretical_limit_of_compressed_message"><span class="tocnumber">4.1</span> <span class="toctext">Theoretical limit of compressed message</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-11"><a href="#p-adic_interpretation_of_arithmetic_coding_algorithm"><span class="tocnumber">5</span> <span class="toctext">p-adic interpretation of arithmetic coding algorithm</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Connections_with_other_compression_methods"><span class="tocnumber">6</span> <span class="toctext">Connections with other compression methods</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#Huffman_coding"><span class="tocnumber">6.1</span> <span class="toctext">Huffman coding</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="#US_patents"><span class="tocnumber">7</span> <span class="toctext">US patents</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Benchmarks_and_other_technical_characteristics"><span class="tocnumber">8</span> <span class="toctext">Benchmarks and other technical characteristics</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#Teaching_aid"><span class="tocnumber">9</span> <span class="toctext">Teaching aid</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#See_also"><span class="tocnumber">10</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Notes"><span class="tocnumber">11</span> <span class="toctext">Notes</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#References"><span class="tocnumber">12</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="#External_links"><span class="tocnumber">13</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="Implementation_details_and_examples">Implementation details and examples</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=1" title="Edit section: Implementation details and examples">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Equal_probabilities">Equal probabilities</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=2" title="Edit section: Equal probabilities">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In the simplest case, the probability of each symbol occurring is equal. For example, consider a set of three symbols, A, B, and C, each equally likely to occur. Simple <a href="/wiki/Block_encoding" title="Block encoding" class="mw-redirect">block encoding</a> would require 2 bits per symbol, which is wasteful: one of the bit variations is never used. That is to say, A=00, B=01, and C=10, but 11 is unused.</p>
+<p>A more efficient solution is to represent a sequence of these three symbols as a rational number in base 3 where each digit represents a symbol. For example, the sequence "ABBCAB" could become 0.011201<sub>3</sub> (in arithmetic coding the numbers are between 0 and 1). The next step is to encode this <a href="/wiki/Ternary_numeral_system" title="Ternary numeral system">ternary</a> number using a fixed-point binary number of sufficient precision to recover it, such as 0.0010110001<sub>2</sub> — this is only 10 bits; 2 bits are saved in comparison with naïve block encoding. This is feasible for long sequences because there are efficient, in-place algorithms for converting the base of arbitrarily precise numbers.</p>
+<p>To decode the value, knowing the original string had length 6, one can simply convert back to base 3, round to 6 digits, and recover the string.</p>
+<h3><span class="mw-headline" id="Defining_a_model">Defining a model</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=3" title="Edit section: Defining a model">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In general, arithmetic coders can produce near-optimal output for any given set of symbols and probabilities (the optimal value is -log<i><sub>2</sub>P</i> bits for each symbol of probability <i>P</i>, see <a href="/wiki/Source_coding_theorem" title="Source coding theorem" class="mw-redirect">source coding theorem</a>). Compression algorithms that use arithmetic coding start by determining a <a href="/wiki/Model_(abstract)" title="Model (abstract)" class="mw-redirect">model</a> of the data – basically a prediction of what patterns will be found in the symbols of the message. The more accurate this prediction is, the closer to optimal the output will be.</p>
+<p><b>Example</b>: a simple, static model for describing the output of a particular monitoring instrument over time might be:</p>
+<ul>
+<li>60% chance of symbol NEUTRAL</li>
+<li>20% chance of symbol POSITIVE</li>
+<li>10% chance of symbol NEGATIVE</li>
+<li>10% chance of symbol END-OF-DATA. <i>(The presence of this symbol means that the stream will be 'internally terminated', as is fairly common in data compression; when this symbol appears in the data stream, the decoder will know that the entire stream has been decoded.)</i></li>
+</ul>
+<p>Models can also handle alphabets other than the simple four-symbol set chosen for this example. More sophisticated models are also possible: <i>higher-order</i> modelling changes its estimation of the current probability of a symbol based on the symbols that precede it (the <i>context</i>), so that in a model for English text, for example, the percentage chance of "u" would be much higher when it follows a "Q" or a "q". Models can even be <i><a href="/wiki/Adaptive_coding" title="Adaptive coding">adaptive</a></i>, so that they continually change their prediction of the data based on what the stream actually contains. The decoder must have the same model as the encoder.</p>
+<h3><span class="mw-headline" id="Encoding_and_decoding:_overview">Encoding and decoding: overview</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=4" title="Edit section: Encoding and decoding: overview">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In general, each step of the encoding process, except for the very last, is the same; the encoder has basically just three pieces of data to consider:</p>
+<ul>
+<li>The next symbol that needs to be encoded</li>
+<li>The current <a href="/wiki/Interval_(mathematics)" title="Interval (mathematics)">interval</a> (at the very start of the encoding process, the interval is set to [0,1), but that will change)</li>
+<li>The probabilities the model assigns to each of the various symbols that are possible at this stage (as mentioned earlier, higher-order or adaptive models mean that these probabilities are not necessarily the same in each step.)</li>
+</ul>
+<p>The encoder divides the current interval into sub-intervals, each representing a fraction of the current interval proportional to the probability of that symbol in the current context. Whichever interval corresponds to the actual symbol that is next to be encoded becomes the interval used in the next step.</p>
+<p><b>Example</b>: for the four-symbol model above:</p>
+<ul>
+<li>the interval for NEUTRAL would be [0, 0.6)</li>
+<li>the interval for POSITIVE would be [0.6, 0.8)</li>
+<li>the interval for NEGATIVE would be [0.8, 0.9)</li>
+<li>the interval for END-OF-DATA would be [0.9, 1).</li>
+</ul>
+<p>When all symbols have been encoded, the resulting interval unambiguously identifies the sequence of symbols that produced it. Anyone who has the same final interval and model that is being used can reconstruct the symbol sequence that must have entered the encoder to result in that final interval.</p>
+<p>It is not necessary to transmit the final interval, however; it is only necessary to transmit <i>one fraction</i> that lies within that interval. In particular, it is only necessary to transmit enough digits (in whatever base) of the fraction so that all fractions that begin with those digits fall into the final interval.</p>
+<h3><span class="mw-headline" id="Encoding_and_decoding:_example">Encoding and decoding: example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=5" title="Edit section: Encoding and decoding: example">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="thumb tright">
+<div class="thumbinner" style="width:402px;"><a href="/wiki/File:Arithmetic_encoding.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Arithmetic_encoding.svg/400px-Arithmetic_encoding.svg.png" width="400" height="200" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Arithmetic_encoding.svg/600px-Arithmetic_encoding.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Arithmetic_encoding.svg/800px-Arithmetic_encoding.svg.png 2x" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Arithmetic_encoding.svg" class="internal" title="Enlarge"><img src="//bits.wikimedia.org/static-1.23wmf7/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+A diagram showing decoding of 0.538 (the circular point) in the example model. The region is divided into subregions proportional to symbol frequencies, then the subregion containing the point is successively subdivided in the same way.</div>
+</div>
+</div>
+<p>Consider the process for decoding a message encoded with the given four-symbol model. The message is encoded in the fraction 0.538 (using decimal for clarity, instead of binary; also assuming that there are only as many digits as needed to decode the message.)</p>
+<p>The process starts with the same interval used by the encoder: [0,1), and using the same model, dividing it into the same four sub-intervals that the encoder must have. The fraction 0.538 falls into the sub-interval for NEUTRAL, [0, 0.6); this indicates that the first symbol the encoder read must have been NEUTRAL, so this is the first symbol of the message.</p>
+<p>Next divide the interval [0, 0.6) into sub-intervals:</p>
+<ul>
+<li>the interval for NEUTRAL would be [0, 0.36), <i>60% of [0, 0.6)</i>.</li>
+<li>the interval for POSITIVE would be [0.36, 0.48), <i>20% of [0, 0.6)</i>.</li>
+<li>the interval for NEGATIVE would be [0.48, 0.54), <i>10% of [0, 0.6)</i>.</li>
+<li>the interval for END-OF-DATA would be [0.54, 0.6), <i>10% of [0, 0.6)</i>.</li>
+</ul>
+<p>Since .538 is within the interval [0.48, 0.54), the second symbol of the message must have been NEGATIVE.</p>
+<p>Again divide our current interval into sub-intervals:</p>
+<ul>
+<li>the interval for NEUTRAL would be [0.48, 0.516).</li>
+<li>the interval for POSITIVE would be [0.516, 0.528).</li>
+<li>the interval for NEGATIVE would be [0.528, 0.534).</li>
+<li>the interval for END-OF-DATA would be [0.534, 0.540).</li>
+</ul>
+<p>Now 0.538 falls within the interval of the END-OF-DATA symbol; therefore, this must be the next symbol. Since it is also the internal termination symbol, it means the decoding is complete. If the stream is not internally terminated, there needs to be some other way to indicate where the stream stops. Otherwise, the decoding process could continue forever, mistakenly reading more symbols from the fraction than were in fact encoded into it.</p>
+<h3><span class="mw-headline" id="Sources_of_inefficiency">Sources of inefficiency</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=6" title="Edit section: Sources of inefficiency">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The message 0.538 in the previous example could have been encoded by the equally short fractions 0.534, 0.535, 0.536, 0.537 or 0.539. This suggests that the use of decimal instead of binary introduced some inefficiency. This is correct; the information content of a three-digit decimal is approximately 9.966 <a href="/wiki/Bit" title="Bit">bits</a>; the same message could have been encoded in the binary fraction 0.10001010 (equivalent to 0.5390625 decimal) at a cost of only 8 bits. (The final zero must be specified in the binary fraction, or else the message would be ambiguous without external information such as compressed stream size.)</p>
+<p>This 8 bit output is larger than the information content, or <a href="/wiki/Information_entropy" title="Information entropy" class="mw-redirect">entropy</a> of the message, which is 1.57&#160;×&#160;3 or 4.71 bits. The large difference between the example's 8 (or 7 with external compressed data size information) bits of output and the entropy of 4.71 bits is caused by the short example message not being able to exercise the coder effectively. The claimed symbol probabilities were [0.6,&#160;0.2,&#160;0.1,&#160;0.1], but the actual frequencies in this example are [0.33,&#160;0,&#160;0.33,&#160;0.33]. If the intervals are readjusted for these frequencies, the entropy of the message would be 1.58 bits and the same NEUTRAL NEGATIVE ENDOFDATA message could be encoded as intervals [0,&#160;1/3); [1/9,&#160;2/9); [5/27,&#160;6/27); and a binary interval of [0.00101111011, 0.00111000111). This could yield an output message of 0011, or just 4 bits. This is also an example of how statistical coding methods like arithmetic encoding can produce an output message that is larger than the input message, especially if the probability model is off.</p>
+<h2><span class="mw-headline" id="Adaptive_arithmetic_coding">Adaptive arithmetic coding</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=7" title="Edit section: Adaptive arithmetic coding">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>One advantage of arithmetic coding over other similar methods of data compression is the convenience of adaptation. <i>Adaptation</i> is the changing of the frequency (or probability) tables while processing the data. The decoded data matches the original data as long as the frequency table in decoding is replaced in the same way and in the same step as in encoding. The synchronization is, usually, based on a combination of symbols occurring during the encoding and decoding process. Adaptive arithmetic coding significantly improves the compression ratio compared to static methods; it may be as effective as 2 to 3 times better in the result.</p>
+<h2><span class="mw-headline" id="Precision_and_renormalization">Precision and renormalization</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=8" title="Edit section: Precision and renormalization">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The above explanations of arithmetic coding contain some simplification. In particular, they are written as if the encoder first calculated the fractions representing the endpoints of the interval in full, using infinite <a href="/wiki/Precision_(arithmetic)" title="Precision (arithmetic)" class="mw-redirect">precision</a>, and only converted the fraction to its final form at the end of encoding. Rather than try to simulate infinite precision, most arithmetic coders instead operate at a fixed limit of precision which they know the decoder will be able to match, and round the calculated fractions to their nearest equivalents at that precision. An example shows how this would work if the model called for the interval [0,1) to be divided into thirds, and this was approximated with 8 bit precision. Note that since now the precision is known, so are the binary ranges we'll be able to use.</p>
+<table class="wikitable">
+<tr>
+<th>Symbol</th>
+<th>Probability (expressed as fraction)</th>
+<th>Interval reduced to eight-bit precision (as fractions)</th>
+<th>Interval reduced to eight-bit precision (in binary)</th>
+<th>Range in binary</th>
+</tr>
+<tr align="center">
+<td>A</td>
+<td>1/3</td>
+<td>[0, 85/256)</td>
+<td>[0.00000000, 0.01010101)</td>
+<td>00000000 – 01010100</td>
+</tr>
+<tr align="center">
+<td>B</td>
+<td>1/3</td>
+<td>[85/256, 171/256)</td>
+<td>[0.01010101, 0.10101011)</td>
+<td>01010101 – 10101010</td>
+</tr>
+<tr align="center">
+<td>C</td>
+<td>1/3</td>
+<td>[171/256, 1)</td>
+<td>[0.10101011, 1.00000000)</td>
+<td>10101011 – 11111111</td>
+</tr>
+</table>
+<p>A process called <i>renormalization</i> keeps the finite precision from becoming a limit on the total number of symbols that can be encoded. Whenever the range is reduced to the point where all values in the range share certain beginning digits, those digits are sent to the output. For however many digits of precision the computer <i>can</i> handle, it is now handling fewer than that, so the existing digits are shifted left, and at the right, new digits are added to expand the range as widely as possible. Note that this result occurs in two of the three cases from our previous example.</p>
+<table class="wikitable">
+<tr>
+<th>Symbol</th>
+<th>Probability</th>
+<th>Range</th>
+<th>Digits that can be sent to output</th>
+<th>Range after renormalization</th>
+</tr>
+<tr align="center">
+<td>A</td>
+<td>1/3</td>
+<td><b>0</b>0000000 – <b>0</b>1010100</td>
+<td><b>0</b></td>
+<td>0000000<b>0</b> – 1010100<b>1</b></td>
+</tr>
+<tr align="center">
+<td>B</td>
+<td>1/3</td>
+<td>01010101 – 10101010</td>
+<td>None</td>
+<td>01010101 – 10101010</td>
+</tr>
+<tr align="center">
+<td>C</td>
+<td>1/3</td>
+<td><b>1</b>0101011 – <b>1</b>1111111</td>
+<td><b>1</b></td>
+<td>0101011<b>0</b> – 1111111<b>1</b></td>
+</tr>
+</table>
+<h2><span class="mw-headline" id="Arithmetic_coding_as_a_generalized_change_of_radix">Arithmetic coding as a generalized change of radix</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=9" title="Edit section: Arithmetic coding as a generalized change of radix">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Recall that in the case where the symbols had equal probabilities, arithmetic coding could be implemented by a simple change of base, or radix. In general, arithmetic (and range) coding may be interpreted as a <i>generalized</i> change of <a href="/wiki/Radix" title="Radix">radix</a>. For example, we may look at any sequence of symbols:</p>
+<dl>
+<dd><img class="tex" alt="DABDDB" src="//upload.wikimedia.org/math/2/f/d/2fd6ee14e2f03941ad550b05e1f09f53.png" /></dd>
+</dl>
+<p>as a number in a certain base presuming that the involved symbols form an ordered set and each symbol in the ordered set denotes a sequential integer <i>A</i>&#160;=&#160;0, <i>B</i>&#160;=&#160;1, <i>C</i>&#160;=&#160;2, <i>D</i>&#160;=&#160;3, and so on. This results in the following frequencies and cumulative frequencies:</p>
+<table class="wikitable">
+<tr>
+<th>Symbol</th>
+<th>Frequency of occurrence</th>
+<th>Cumulative frequency</th>
+</tr>
+<tr align="center">
+<td><i>A</i></td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr align="center">
+<td><i>B</i></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr align="center">
+<td><i>D</i></td>
+<td>3</td>
+<td>3</td>
+</tr>
+</table>
+<p>The <i>cumulative frequency</i> is the total of all frequencies below it in a frequency distribution (a running total of frequencies).</p>
+<p>In a positional <a href="/wiki/Numeral_system" title="Numeral system">numeral system</a> the radix, or base, is numerically equal to a number of different symbols used to express the number. For example, in the decimal system the number of symbols is 10, namely 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. The radix is used to express any finite integer in a presumed multiplier in polynomial form. For example, the number 457 is actually 4×10<sup>2</sup>&#160;+&#160;5×10<sup>1</sup>&#160;+&#160;7×10<sup>0</sup>, where base 10 is presumed but not shown explicitly.</p>
+<p>Initially, we will convert DABDDB into a base-6 numeral, because 6 is the length of the string. The string is first mapped into the digit string 301331, which then maps to an integer by the polynomial:</p>
+<dl>
+<dd><img class="tex" alt="6^5 \times 3 + 6^4 \times 0 + 6^3 \times 1 + 6^2 \times 3 + 6^1 \times 3 + 6^0 \times 1 = 23671" src="//upload.wikimedia.org/math/e/8/3/e8303c8a3f46c0a49e25188572191d74.png" /></dd>
+</dl>
+<p>The result 23671 has a length of 15 bits, which is not very close to the theoretical limit (the <a href="/wiki/Entropy_(information_theory)" title="Entropy (information theory)">entropy</a> of the message), which is approximately 9 bits.</p>
+<p>To encode a message with a length closer to the theoretical limit imposed by information theory we need to slightly generalize the classic formula for changing the radix. We will compute lower and upper bounds L and U and choose a number between them. For the computation of L we multiply each term in the above expression by the product of the frequencies of all previously occurred symbols:</p>
+<dl>
+<dd><img class="tex" alt="\begin{align}
+  \mathrm{L} = {} &amp;(6^5 \times 3) + {}\\
+                  &amp; 3 \times (6^4 \times 0) + {}\\
+                  &amp; (3 \times 1) \times (6^3 \times 1) + {}\\
+                  &amp; (3 \times 1 \times 2) \times (6^2 \times 3) + {}\\
+                  &amp; (3 \times 1 \times 2 \times 3) \times (6^1 \times 3) + {}\\
+                  &amp; (3 \times 1 \times 2 \times 3 \times 3) \times (6^0 \times 1) {}\\
+             = {} &amp; 25002
+\end{align}" src="//upload.wikimedia.org/math/0/f/b/0fbed687c6ea413bb19580753b234661.png" /></dd>
+</dl>
+<p>The difference between this polynomial and the polynomial above is that each term is multiplied by the product of the frequencies of all previously occurring symbols. More generally, L may be computed as:</p>
+<dl>
+<dd><img class="tex" alt=" \mathrm{L} = \sum_{i=1}^n n^{n-i} C_i { \prod_{k=1}^{i-1} f_k } " src="//upload.wikimedia.org/math/7/b/9/7b9b9b26c9d805d8d1482f1222b69fae.png" /></dd>
+</dl>
+<p>where <img class="tex" alt="\scriptstyle C_i" src="//upload.wikimedia.org/math/b/b/d/bbdf3c63c97fda5e858652ab1a6fa37e.png" /> are the cumulative frequencies and <img class="tex" alt="\scriptstyle f_k" src="//upload.wikimedia.org/math/3/a/a/3aac624f9e5fd5afea617532e5c33b92.png" /> are the frequencies of occurrences. Indexes denote the position of the symbol in a message. In the special case where all frequencies <img class="tex" alt="\scriptstyle f_k" src="//upload.wikimedia.org/math/3/a/a/3aac624f9e5fd5afea617532e5c33b92.png" /> are 1, this is the change-of-base formula.</p>
+<p>The upper bound U will be L plus the product of all frequencies; in this case U = L + (3 × 1 × 2 × 3 × 3 × 2) = 25002 + 108 = 25110. In general, U is given by:</p>
+<dl>
+<dd><img class="tex" alt=" \mathrm{U} = \mathrm{L} + \prod_{k=1}^{n} f_k " src="//upload.wikimedia.org/math/a/7/2/a728c6211120c9b5c0445a74f3543807.png" /></dd>
+</dl>
+<p>Now we can choose any number from the interval [L, U) to represent the message; one convenient choice is the value with the longest possible trail of zeroes, 25100, since it allows us to achieve compression by representing the result as 251×10<sup>2</sup>. The zeroes can also be truncated, giving 251, if the length of the message is stored separately. Longer messages will tend to have longer trails of zeroes.</p>
+<p>To decode the integer 25100, the polynomial computation can be reversed as shown in the table below. At each stage the current symbol is identified, then the corresponding term is subtracted from the result.</p>
+<table class="wikitable">
+<tr>
+<th>Remainder</th>
+<th>Identification</th>
+<th>Identified symbol</th>
+<th>Corrected remainder</th>
+</tr>
+<tr align="left">
+<td>25100</td>
+<td>25100 / 6<sup>5</sup> = 3</td>
+<td>D</td>
+<td>(25100 - 6<sup>5</sup> × 3) / 3 = 590</td>
+</tr>
+<tr align="left">
+<td>590</td>
+<td>590 / 6<sup>4</sup> = 0</td>
+<td>A</td>
+<td>(590 - 6<sup>4</sup> × 0) / 1 = 590</td>
+</tr>
+<tr align="left">
+<td>590</td>
+<td>590 / 6<sup>3</sup> = 2</td>
+<td>B</td>
+<td>(590 - 6<sup>3</sup> × 1) / 2 = 187</td>
+</tr>
+<tr align="left">
+<td>187</td>
+<td>187 / 6<sup>2</sup> = 5</td>
+<td>D</td>
+<td>(187 - 6<sup>2</sup> × 3) / 3 = 26</td>
+</tr>
+<tr align="left">
+<td>26</td>
+<td>26 / 6<sup>1</sup> = 4</td>
+<td>D</td>
+<td>(26 - 6<sup>1</sup> × 3) / 3 = 2</td>
+</tr>
+<tr align="left">
+<td>2</td>
+<td>2 / 6<sup>0</sup> = 2</td>
+<td>B</td>
+<td></td>
+</tr>
+</table>
+<p>During decoding we take the floor after dividing by the corresponding power of 6. The result is then matched against the cumulative intervals and the appropriate symbol is selected from look up table. When the symbol is identified the result is corrected. The process is continued for the known length of the message or while the remaining result is positive. The only difference compared to the classical change-of-base is that there may be a range of values associated with each symbol. In this example, A is always 0, B is either 1 or 2, and D is any of 3, 4, 5. This is in exact accordance with our intervals that are determined by the frequencies. When all intervals are equal to 1 we have a special case of the classic base change.</p>
+<h3><span class="mw-headline" id="Theoretical_limit_of_compressed_message">Theoretical limit of compressed message</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=10" title="Edit section: Theoretical limit of compressed message">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The lower bound L never exceeds <i>n</i><sup><i>n</i></sup>, where <i>n</i> is the size of the message, and so can be represented in <img class="tex" alt="\scriptstyle\log_2(n^n) \;=\; n \log_2(n)" src="//upload.wikimedia.org/math/8/6/c/86cbb0d252f3cb6625014fb460e2929f.png" /> bits. After the computation of the upper bound <i>U</i> and the reduction of the message by selecting a number from the interval [<i>L</i>,&#160;<i>U</i>) with the longest trail of zeros we can presume that this length can be reduced by <img class="tex" alt="\scriptstyle\log_2\left(\prod_{k=1}^n f_k\right)" src="//upload.wikimedia.org/math/c/2/d/c2df889ee554da4b617d3334ffa09c27.png" /> bits. Since each frequency in a product occurs exactly same number of times as the value of this frequency, we can use the size of the alphabet <i>A</i> for the computation of the product</p>
+<dl>
+<dd><img class="tex" alt=" \prod_{k=1}^n f_k = \prod_{k=1}^A f_k^{f_k}" src="//upload.wikimedia.org/math/a/9/6/a969125c3fe1fcec5717865883dc45ab.png" /></dd>
+</dl>
+<p>Applying log<sub>2</sub> for the estimated number of bits in the message, the final message (not counting a logarithmic overhead for the message length and frequency tables) will match the number of bits given by <a href="/wiki/Entropy_(information_theory)" title="Entropy (information theory)">entropy</a>, which for long messages is very close to optimal:</p>
+<dl>
+<dd><img class="tex" alt="n \log_2(n) - \sum_{i=1}^A f_i \log_2(f_i) " src="//upload.wikimedia.org/math/a/2/7/a27d2141672bf183706a29e874440b3f.png" /></dd>
+</dl>
+<h2><span class="mw-headline" id="p-adic_interpretation_of_arithmetic_coding_algorithm">p-adic interpretation of arithmetic coding algorithm</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=11" title="Edit section: p-adic interpretation of arithmetic coding algorithm">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Arithmetic coding being expressed in terms of real numbers looks very natural and is easy to understand. It is nothing but a sequence of semi intervals each lies inside the previous one. But here is a problem – one has to use infinite precision real numbers to implement this algorithm and there is no such a thing like effective infinite precision real arithmetic. This problem was always considered as a technical one. Solution is simple - just use integers instead.&#160;There is a canonical implementation, first written in C [Witten], which was later reproduced in other languages, but no analysis of what happens to the algorithm after moving it from the real numbers to integer numbers was published. In fact, the integer variant of the algorithm looks very artificial and contains some magic rules: E1, E2 and E3. Though these rules work quite well the question remains – do they have natural mathematical explanation?</p>
+<p>p-adic numbers provides clear interpretation of the algorithm. In fact, all the intermediate data and the result can be seen as p-adic integers with p=2. The modified algorithm operates on p-adic semi intervals in the same way, as the original works with real semi intervals. For example the magic rules E1, E2 mean that the current p-adic semi interval lies completely in a p-adic ball. In this case the p-adic ball can be pushed out and p-adic semi interval rescaled. From this point of view Huffman algorithm is just a specific variant of arithmetic coding when semi intervals are always p-adic balls.</p>
+<p>The algorithm can be extended to arbitrary p. All E1, E2, and E3 rules work in this case too. More information on p-adic variant of arithmetic coding can be found in [Rodionov, Volkov 2007, 2010].</p>
+<h2><span class="mw-headline" id="Connections_with_other_compression_methods">Connections with other compression methods</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=12" title="Edit section: Connections with other compression methods">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Huffman_coding">Huffman coding</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=13" title="Edit section: Huffman coding">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="rellink relarticle mainarticle">Main article: <a href="/wiki/Huffman_coding" title="Huffman coding">Huffman coding</a></div>
+<p>There is great similarity between arithmetic coding and Huffman coding – in fact, it has been shown that Huffman is just a specialized case of arithmetic coding – but because arithmetic coding translates the entire message into one number represented in <a href="/wiki/Radix" title="Radix">base</a> <i>b</i>, rather than translating each symbol of the message into a series of digits in base <i>b</i>, it will sometimes approach optimal <a href="/wiki/Entropy_encoding" title="Entropy encoding">entropy encoding</a> much more closely than Huffman can.</p>
+<p>In fact, a Huffman code corresponds closely to an arithmetic code where each of the frequencies is rounded to a nearby power of ½ — for this reason Huffman deals relatively poorly with distributions where symbols have frequencies far from a power of ½, such as 0.75 or 0.375. This includes most distributions where there are either a small numbers of symbols (such as just the bits 0 and 1) or where one or two symbols dominate the rest.</p>
+<p>For an alphabet {a, b, c} with equal probabilities of 1/3, Huffman coding may produce the following code:</p>
+<ul>
+<li>a ? <tt>0</tt>: 50%</li>
+<li>b ? <tt>10</tt>: 25%</li>
+<li>c ? <tt>11</tt>: 25%</li>
+</ul>
+<p>This code has an expected (2 + 2 + 1)/3 ˜ 1.667 bits per symbol for Huffman coding, an inefficiency of 5 percent compared to log<sub>2</sub>3 ˜ 1.585 bits per symbol for arithmetic coding.</p>
+<p>For an alphabet {0, 1} with probabilities 0.625 and 0.375, Huffman encoding treats them as though they had 0.5 probability each, assigning 1 bit to each value, which does not achieve any compression over naive block encoding. Arithmetic coding approaches the optimal compression ratio of</p>
+<dl>
+<dd><img class="tex" alt=" 1 - [-0.625 \log_2(0.625) + -0.375 \log_2(0.375)] \approx 4.6%." src="//upload.wikimedia.org/math/9/d/4/9d446dba8017c55e13314f79d5e827e4.png" /></dd>
+</dl>
+<p>When the symbol 0 has a high probability of 0.95, the difference is much greater:</p>
+<dl>
+<dd><img class="tex" alt=" 1 - [-0.95 \log_2(0.95) + -0.05 \log_2(0.05)] \approx 71.4%." src="//upload.wikimedia.org/math/f/1/3/f13372c1f21a7c74d122ac0fe998aa2d.png" /></dd>
+</dl>
+<p>One simple way to address this weakness is to concatenate symbols to form a new alphabet in which each symbol represents a sequence of symbols in the original alphabet. In the above example, grouping sequences of three symbols before encoding would produce new "super-symbols" with the following frequencies:</p>
+<ul>
+<li><tt>000</tt>: 85.7%</li>
+<li><tt>001</tt>, <tt>010</tt>, <tt>100</tt>: 4.5% each</li>
+<li><tt>011</tt>, <tt>101</tt>, <tt>110</tt>: 0.24% each</li>
+<li><tt>111</tt>: 0.0125%</li>
+</ul>
+<p>With this grouping, Huffman coding averages 1.3 bits for every three symbols, or 0.433 bits per symbol, compared with one bit per symbol in the original encoding.</p>
+<h2><span class="mw-headline" id="US_patents">US patents</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=14" title="Edit section: US patents">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>A variety of specific techniques for arithmetic coding have historically been covered by US <a href="/wiki/Patent" title="Patent">patents</a>, although various well-known methods have since passed into the public domain as the patents have expired. Techniques covered by patents may be essential for implementing the algorithms for arithmetic coding that are specified in some formal international standards. When this is the case, such patents are generally available for licensing under what is called "reasonable and non-discriminatory" (<a href="/wiki/Reasonable_and_Non_Discriminatory_Licensing" title="Reasonable and Non Discriminatory Licensing" class="mw-redirect">RAND</a>) licensing terms (at least as a matter of standards-committee policy). In some well-known instances (including some involving IBM patents that have since expired) such licenses were available free, and in other instances, licensing fees have been required. The availability of licenses under RAND terms does not necessarily satisfy everyone who might want to use the technology, as what may seem "reasonable" for a company preparing a proprietary software product may seem much less reasonable for a <a href="/wiki/Free_software" title="Free software">free software</a> or <a href="/wiki/Open_source" title="Open source">open source</a> project.</p>
+<p>At least one significant compression software program, <a href="/wiki/Bzip2" title="Bzip2">bzip2</a>, deliberately discontinued the use of arithmetic coding in favor of Huffman coding due to the perceived patent situation at the time. Also, encoders and decoders of the <a href="/wiki/JPEG" title="JPEG">JPEG</a> file format, which has options for both Huffman encoding and arithmetic coding, typically only support the Huffman encoding option, which was originally because of patent concerns; the result is that nearly all JPEG images in use today use Huffman encoding<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span>[</span>1<span>]</span></a></sup> although JPEG's arithmetic coding patents<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span>[</span>2<span>]</span></a></sup> have expired due to the age of the JPEG standard (the design of which was approximately completed by 1990).<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span>[</span>3<span>]</span></a></sup> There are some archivers like PackJPG, that can losslessly convert Huffman encoded jpegs to jpegs with arithmetic coding (with custom file name .pjg), showing up to 25% size saving.</p>
+<p>Some US patents relating to arithmetic coding are listed below.</p>
+<ul>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4122440">U.S. Patent 4,122,440</a></span> — (IBM) Filed 4 March 1977, Granted 24 October 1978 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4286256">U.S. Patent 4,286,256</a></span> — (IBM) Granted 25 August 1981 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4467317">U.S. Patent 4,467,317</a></span> — (IBM) Granted 21 August 1984 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4652856">U.S. Patent 4,652,856</a></span> — (IBM) Granted 4 February 1986 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4891643">U.S. Patent 4,891,643</a></span> — (IBM) Filed 15 September 1986, granted 2 January 1990 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4905297">U.S. Patent 4,905,297</a></span> — (IBM) Filed 18 November 1988, granted 27 February 1990 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4933883">U.S. Patent 4,933,883</a></span> — (IBM) Filed 3 May 1988, granted 12 June 1990 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4935882">U.S. Patent 4,935,882</a></span> — (IBM) Filed 20 July 1988, granted 19 June 1990 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US4989000">U.S. Patent 4,989,000</a></span> — Filed 19 June 1989, granted 29 January 1991 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US5099440">U.S. Patent 5,099,440</a></span> — (IBM) Filed 5 January 1990, granted 24 March 1992 (Now expired)</li>
+<li><span><a rel="nofollow" class="external text" href="http://www.google.com/patents/US5272478">U.S. Patent 5,272,478</a></span> — (Ricoh) Filed 17 August 1992, granted 21 December 1993 (Now expired)</li>
+</ul>
+<p>Note: This list is not exhaustive. See the following link for a list of more patents.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span>[</span>4<span>]</span></a></sup> The <a href="/wiki/Dirac_(codec)" title="Dirac (codec)" class="mw-redirect">Dirac codec</a> uses arithmetic coding and is not patent pending.<sup id="cite_ref-5" class="reference"><a href="#cite_note-5"><span>[</span>5<span>]</span></a></sup></p>
+<p>Patents on arithmetic coding may exist in other jurisdictions, see <a href="/wiki/Software_patent" title="Software patent">software patents</a> for a discussion of the patentability of software around the world.</p>
+<h2><span class="mw-headline" id="Benchmarks_and_other_technical_characteristics">Benchmarks and other technical characteristics</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=15" title="Edit section: Benchmarks and other technical characteristics">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Every programmatic implementation of arithmetic encoding has a different compression ratio and performance. While compression ratios vary only a little (usually under 1%),<sup id="cite_ref-6" class="reference"><a href="#cite_note-6"><span>[</span>6<span>]</span></a></sup> the code execution time can vary by a factor of 10. Choosing the right encoder from a list of publicly available encoders is not a simple task because performance and compression ratio depend also on the type of data, particularly on the size of the alphabet (number of different symbols). One of two particular encoders may have better performance for small alphabets while the other may show better performance for large alphabets. Most encoders have limitations on the size of the alphabet and many of them are specialised for alphabets of exactly two symbols (0 and 1).</p>
+<h2><span class="mw-headline" id="Teaching_aid">Teaching aid</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=16" title="Edit section: Teaching aid">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>An <a href="/wiki/Interactive_visualization" title="Interactive visualization">interactive visualization</a> tool for teaching arithmetic coding, <a rel="nofollow" class="external text" href="http://www.inference.phy.cam.ac.uk/mackay/itprnn/softwareI.html">dasher.tcl</a>, was also the first prototype of the <a href="/wiki/Assistive_technology" title="Assistive technology">assistive</a> communication system, <a href="/wiki/Dasher_(software)" title="Dasher (software)">Dasher</a>.</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=17" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/Data_compression" title="Data compression">Data compression</a></li>
+</ul>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=18" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external autonumber" href="http://www.faqs.org/faqs/compression-faq/part1/section-17.html">[1]</a> What is JPEG? comp.compression Frequently Asked Questions (part 1/3)</span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="http://www.itu.int/rec/T-REC-T.81-200401-I!Cor1/dologin.asp?lang=e&amp;id=T-REC-T.81-200401-I!Cor1!PDF-E&amp;type=items">"Recommendation T.81 (1992) Corrigendum 1 (01/04)"</a>. <i>Recommendation T.81 (1992)</i>. International Telecommunication Union. 9 November 2004<span class="reference-accessdate">. Retrieved 3 February 2011</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Recommendation+T.81+%281992%29+Corrigendum+1+%2801%2F04%29&amp;rft.date=9+November+2004&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fwww.itu.int%2Frec%2FT-REC-T.81-200401-I%21Cor1%2Fdologin.asp%3Flang%3De%26id%3DT-REC-T.81-200401-I%21Cor1%21PDF-E%26type%3Ditems&amp;rft.jtitle=Recommendation+T.81+%281992%29&amp;rft.pub=International+Telecommunication+Union&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text"><i>JPEG Still Image Data Compression Standard</i>, W. B. Pennebaker and J. L. Mitchell, Kluwer Academic Press, 1992. <a href="/wiki/Special:BookSources/0442012721" class="internal mw-magiclink-isbn">ISBN 0-442-01272-1</a></span></li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external autonumber" href="http://www.faqs.org/faqs/compression-faq/part1/">[2]</a> comp.compression Frequently Asked Questions (part 1/3)</span></li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-5">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external autonumber" href="http://lwn.net/Articles/272520/">[3]</a> Dirac video codec 1.0 released</span></li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-6">^</a></b></span> <span class="reference-text">For instance, <a href="#CITEREFHowardVitter1994">Howard &amp; Vitter (1994</a>) discuss versions of arithmetic coding based on real-number ranges, integer approximations to those ranges, and an even more restricted type of approximation that they call binary quasi-arithmetic coding. They state that the difference between real and integer versions is negligible, prove that the compression loss for their quasi-arithmetic method can be made arbitrarily small, and bound the compression loss incurred by one of their approximations as less than 0.06%. See: <span id="CITEREFHowardVitter1994" class="citation">Howard, Paul G.; Vitter, Jeffrey S. (1994), <a rel="nofollow" class="external text" href="http://home.tiscali.nl/rajduim/Video%20Compression%20Docs/Arithmetic%20Coding%20For%20Data%20Compression%20(2).pdf">"Arithmetic coding for data compression"</a>, <i>Proceedings of the IEEE</i> <b>82</b> (6): 857–865, <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1109%2F5.286189">10.1109/5.286189</a></span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Arithmetic+coding+for+data+compression&amp;rft.aufirst=Paul+G.&amp;rft.au=Howard%2C+Paul+G.&amp;rft.aulast=Howard&amp;rft.au=Vitter%2C+Jeffrey+S.&amp;rft.date=1994&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fhome.tiscali.nl%2Frajduim%2FVideo%2520Compression%2520Docs%2FArithmetic%2520Coding%2520For%2520Data%2520Compression%2520%282%29.pdf&amp;rft_id=info%3Adoi%2F10.1109%2F5.286189&amp;rft.issue=6&amp;rft.jtitle=Proceedings+of+the+IEEE&amp;rft.pages=857%E2%80%93865&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=82" class="Z3988"><span style="display:none;">&#160;</span></span>.</span></li>
+</ol>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=19" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><span class="citation book"><a href="/wiki/David_MacKay_(scientist)" title="David MacKay (scientist)" class="mw-redirect">MacKay, David J.C.</a> (September 2003). <a rel="nofollow" class="external text" href="http://www.inference.phy.cam.ac.uk/mackay/itila/book.html">"Chapter 6: Stream Codes"</a> (PDF/<a href="/wiki/PostScript" title="PostScript">PostScript</a>/<a href="/wiki/DjVu" title="DjVu">DjVu</a>/<a href="/wiki/LaTeX" title="LaTeX">LaTeX</a>). <i>Information Theory, Inference, and Learning Algorithms</i>. <a href="/wiki/Cambridge_University_Press" title="Cambridge University Press">Cambridge University Press</a>. <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&#160;<a href="/wiki/Special:BookSources/0-521-64298-1" title="Special:BookSources/0-521-64298-1">0-521-64298-1</a>. <a rel="nofollow" class="external text" href="http://web.archive.org/web/20071222053346/http://www.inference.phy.cam.ac.uk/mackay/itila/book.html">Archived</a> from the original on 22 December 2007<span class="reference-accessdate">. Retrieved 2007-12-30</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Information+Theory%2C+Inference%2C+and+Learning+Algorithms&amp;rft.aufirst=David+J.C.&amp;rft.aulast=MacKay&amp;rft.au=MacKay%2C+David+J.C.&amp;rft.btitle=Chapter+6%3A+Stream+Codes&amp;rft.date=September+2003&amp;rft.genre=bookitem&amp;rft_id=http%3A%2F%2Fwww.inference.phy.cam.ac.uk%2Fmackay%2Fitila%2Fbook.html&amp;rft.isbn=0-521-64298-1&amp;rft.pub=Cambridge+University+Press&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span> <span style="display:none;font-size:100%" class="error citation-comment">Cite uses deprecated parameters (<a href="/wiki/Help:CS1_errors#deprecated_params" title="Help:CS1 errors">help</a>)</span></li>
+<li><span class="citation book">Press, WH; Teukolsky, SA; Vetterling, WT; Flannery, BP (2007). <a rel="nofollow" class="external text" href="http://apps.nrbook.com/empanel/index.html#pg=1181">"Section 22.6. Arithmetic Coding"</a>. <i>Numerical Recipes: The Art of Scientific Computing</i> (3rd ed.). New York: Cambridge University Press. <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-0-521-88068-8" title="Special:BookSources/978-0-521-88068-8">978-0-521-88068-8</a>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Numerical+Recipes%3A+The+Art+of+Scientific+Computing&amp;rft.aufirst=WH&amp;rft.au=Flannery%2C+BP&amp;rft.aulast=Press&amp;rft.au=Press%2C+WH&amp;rft.au=Teukolsky%2C+SA&amp;rft.au=Vetterling%2C+WT&amp;rft.btitle=Section+22.6.+Arithmetic+Coding&amp;rft.date=2007&amp;rft.edition=3rd&amp;rft.genre=bookitem&amp;rft_id=http%3A%2F%2Fapps.nrbook.com%2Fempanel%2Findex.html%23pg%3D1181&amp;rft.isbn=978-0-521-88068-8&amp;rft.place=New+York&amp;rft.pub=Cambridge+University+Press&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></li>
+<li><span class="citation journal"><a href="/wiki/Jorma_Rissanen" title="Jorma Rissanen">Rissanen, Jorma</a> (May 1976). <a rel="nofollow" class="external text" href="http://domino.watson.ibm.com/tchjr/journalindex.nsf/4ac37cf0bdc4dd6a85256547004d47e1/53fec2e5af172a3185256bfa0067f7a0?OpenDocument">"Generalized Kraft Inequality and Arithmetic Coding"</a> (<a href="/wiki/PDF" title="PDF" class="mw-redirect">PDF</a>). <i>IBM Journal of Research and Development</i> <b>20</b> (3): 198–203. <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1147%2Frd.203.0198">10.1147/rd.203.0198</a><span class="reference-accessdate">. Retrieved 2007-09-21</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Generalized+Kraft+Inequality+and+Arithmetic+Coding&amp;rft.aufirst=Jorma&amp;rft.aulast=Rissanen&amp;rft.au=Rissanen%2C+Jorma&amp;rft.date=May+1976&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fdomino.watson.ibm.com%2Ftchjr%2Fjournalindex.nsf%2F4ac37cf0bdc4dd6a85256547004d47e1%2F53fec2e5af172a3185256bfa0067f7a0%3FOpenDocument&amp;rft_id=info%3Adoi%2F10.1147%2Frd.203.0198&amp;rft.issue=3&amp;rft.jtitle=IBM+Journal+of+Research+and+Development&amp;rft.pages=198%26ndash%3B203&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=20" class="Z3988"><span style="display:none;">&#160;</span></span> <span style="display:none;font-size:100%" class="error citation-comment">Cite uses deprecated parameters (<a href="/wiki/Help:CS1_errors#deprecated_params" title="Help:CS1 errors">help</a>)</span></li>
+<li><span class="citation journal">Rissanen, J.J.; Langdon, G.G., Jr. (March 1979). <a rel="nofollow" class="external text" href="http://researchweb.watson.ibm.com/journal/rd/232/ibmrd2302G.pdf">"Arithmetic coding"</a> (PDF). <i>IBM Journal of Research and Development</i> <b>23</b> (2): 149–162. <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1147%2Frd.232.0149">10.1147/rd.232.0149</a>. <a rel="nofollow" class="external text" href="http://web.archive.org/web/20070928023306/http://researchweb.watson.ibm.com/journal/rd/232/ibmrd2302G.pdf">Archived</a> from the original on 28 September 2007<span class="reference-accessdate">. Retrieved 2007-09-22</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Arithmetic+coding&amp;rft.aufirst=J.J.&amp;rft.aulast=Rissanen&amp;rft.au=Rissanen%2C+J.J.&amp;rft.date=March+1979&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fresearchweb.watson.ibm.com%2Fjournal%2Frd%2F232%2Fibmrd2302G.pdf&amp;rft_id=info%3Adoi%2F10.1147%2Frd.232.0149&amp;rft.issue=2&amp;rft.jtitle=IBM+Journal+of+Research+and+Development&amp;rft.pages=149%26ndash%3B162&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=23" class="Z3988"><span style="display:none;">&#160;</span></span> <span style="display:none;font-size:100%" class="error citation-comment">Cite uses deprecated parameters (<a href="/wiki/Help:CS1_errors#deprecated_params" title="Help:CS1 errors">help</a>)</span></li>
+<li><span class="citation journal">Witten, Ian H.; Neal, Radford M.; Cleary, John G. (June 1987). <a rel="nofollow" class="external text" href="http://www.stanford.edu/class/ee398a/handouts/papers/WittenACM87ArithmCoding.pdf">"Arithmetic Coding for Data Compression"</a> (PDF). <i><a href="/wiki/Communications_of_the_ACM" title="Communications of the ACM">Communications of the ACM</a></i> <b>30</b> (6): 520–540. <a href="/wiki/Digital_object_identifier" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="http://dx.doi.org/10.1145%2F214762.214771">10.1145/214762.214771</a>. <a rel="nofollow" class="external text" href="http://web.archive.org/web/20070928023306/http://www.stanford.edu/class/ee398a/handouts/papers/WittenACM87ArithmCoding.pdf">Archived</a> from the original on 28 September 2007<span class="reference-accessdate">. Retrieved 2007-09-21</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArithmetic+coding&amp;rft.atitle=Arithmetic+Coding+for+Data+Compression&amp;rft.aufirst=Ian+H.&amp;rft.aulast=Witten&amp;rft.au=Witten%2C+Ian+H.&amp;rft.date=June+1987&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fwww.stanford.edu%2Fclass%2Fee398a%2Fhandouts%2Fpapers%2FWittenACM87ArithmCoding.pdf&amp;rft_id=info%3Adoi%2F10.1145%2F214762.214771&amp;rft.issue=6&amp;rft.jtitle=Communications+of+the+ACM&amp;rft.pages=520%26ndash%3B540&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.volume=30" class="Z3988"><span style="display:none;">&#160;</span></span> <span style="display:none;font-size:100%" class="error citation-comment">Cite uses deprecated parameters (<a href="/wiki/Help:CS1_errors#deprecated_params" title="Help:CS1 errors">help</a>)</span></li>
+</ul>
+<ul>
+<li>Rodionov Anatoly, Volkov Sergey (2010)&#160; “p-adic arithmetic coding” Contemporary Mathematics Volume 508, 2010 Contemporary Mathematics</li>
+<li>Rodionov Anatoly, Volkov Sergey (2007) ” p-adic arithmetic coding”, <a rel="nofollow" class="external free" href="http://arxiv.org/abs//0704.0834v1">http://arxiv.org/abs//0704.0834v1</a></li>
+</ul>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit&amp;section=20" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li>Paul E. Black, <a rel="nofollow" class="external text" href="http://www.nist.gov/dads/HTML/arithmeticCoding.html">arithmetic coding</a> at the <a href="/wiki/National_Institute_of_Standards_and_Technology" title="National Institute of Standards and Technology">NIST</a> <a href="/wiki/Dictionary_of_Algorithms_and_Data_Structures" title="Dictionary of Algorithms and Data Structures">Dictionary of Algorithms and Data Structures</a>.</li>
+<li><a rel="nofollow" class="external text" href="http://www.gtoal.com/wordgames/documents/arithmetic-encoding.mai">Newsgroup posting</a> with a short worked example of arithmetic encoding (integer-only).</li>
+<li><a rel="nofollow" class="external text" href="http://planetmath.org/encyclopedia/ArithmeticEncoding.html">PlanetMath article on arithmetic coding</a></li>
+<li><a rel="nofollow" class="external text" href="http://ezcodesample.com/reanatomy.html">Anatomy of Range Encoder</a> The article explains both range and arithmetic coding. It has also code samples for 3 different arithmetic encoders along with performance comparison.</li>
+<li><a rel="nofollow" class="external text" href="http://hpl.hp.com/techreports/2004/HPL-2004-76.pdf">Introduction to Arithmetic Coding</a>. 60 pages.</li>
+<li>Eric Bodden, Malte Clasen and Joachim Kneis: <a rel="nofollow" class="external text" href="http://www.sable.mcgill.ca/publications/techreports/#report2007-5">Arithmetic Coding revealed</a>. Technical Report 2007-5, Sable Research Group, McGill University.</li>
+<li><a rel="nofollow" class="external text" href="http://dogma.net/markn/articles/arith/part1.htm">Arithmetic Coding + Statistical Modeling = Data Compression</a> by Mark Nelson.</li>
+</ul>
+<table cellspacing="0" class="navbox" style="border-spacing:0;">
+<tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Compression_methods" title="Template:Compression methods"><span title="View this template" style=";;background:none transparent;border:none;;">v</span></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Compression_methods" title="Template talk:Compression methods"><span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Compression_methods&amp;action=edit"><span title="Edit this template" style=";;background:none transparent;border:none;;">e</span></a></li>
+</ul>
+</div>
+<div style="font-size:110%;"><a href="/wiki/Data_compression" title="Data compression">Data compression</a> methods</div>
+</th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Information_theory" title="Information theory">Information theory</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Entropy_(information_theory)" title="Entropy (information theory)">Entropy</a></li>
+<li><a href="/wiki/Kolmogorov_complexity" title="Kolmogorov complexity">Kolmogorov complexity</a></li>
+<li><a href="/wiki/Lossy_compression" title="Lossy compression">Lossy</a></li>
+<li><a href="/wiki/Quantization_(signal_processing)" title="Quantization (signal processing)">Quantization</a></li>
+<li><a href="/wiki/Rate%E2%80%93distortion_theory" title="Rate–distortion theory">Rate–distortion theory</a></li>
+<li><a href="/wiki/Redundancy_(information_theory)" title="Redundancy (information theory)">Redundancy</a></li>
+<li><a href="/wiki/Timeline_of_information_theory" title="Timeline of information theory">Timeline of information theory</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Lossless_compression" title="Lossless compression">Lossless</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Entropy_encoding" title="Entropy encoding">Entropy encoding</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Unary_coding" title="Unary coding">Unary</a></li>
+<li><strong class="selflink">Arithmetic</strong></li>
+<li><a href="/wiki/Golomb_coding" title="Golomb coding">Golomb</a></li>
+<li><a href="/wiki/Huffman_coding" title="Huffman coding">Huffman</a>
+<ul>
+<li><a href="/wiki/Adaptive_Huffman_coding" title="Adaptive Huffman coding">Adaptive</a></li>
+<li><a href="/wiki/Canonical_Huffman_code" title="Canonical Huffman code">Canonical</a></li>
+<li><a href="/wiki/Modified_Huffman_coding" title="Modified Huffman coding">Modified</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Range_encoding" title="Range encoding">Range</a></li>
+<li><a href="/wiki/Shannon%E2%80%93Fano_coding" title="Shannon–Fano coding">Shannon–Fano</a></li>
+<li><a href="/wiki/Shannon%E2%80%93Fano%E2%80%93Elias_coding" title="Shannon–Fano–Elias coding">Shannon–Fano–Elias</a></li>
+<li><a href="/wiki/Tunstall_coding" title="Tunstall coding">Tunstall</a></li>
+<li><a href="/wiki/Universal_code_(data_compression)" title="Universal code (data compression)">Universal</a>
+<ul>
+<li><a href="/wiki/Exponential-Golomb_coding" title="Exponential-Golomb coding">Exp-Golomb</a></li>
+<li><a href="/wiki/Fibonacci_coding" title="Fibonacci coding">Fibonacci</a></li>
+<li><a href="/wiki/Elias_gamma_coding" title="Elias gamma coding">Gamma</a></li>
+<li><a href="/wiki/Levenshtein_coding" title="Levenshtein coding">Levenshtein</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Dictionary_coder" title="Dictionary coder">Dictionary</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Byte_pair_encoding" title="Byte pair encoding">Byte pair encoding</a></li>
+<li><a href="/wiki/DEFLATE" title="DEFLATE">DEFLATE</a></li>
+<li>Lempel–Ziv
+<ul>
+<li><a href="/wiki/LZ77_and_LZ78" title="LZ77 and LZ78">LZ77 and LZ78</a></li>
+<li><a href="/wiki/LZJB" title="LZJB">LZJB</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm" title="Lempel–Ziv–Markov chain algorithm">LZMA</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Oberhumer" title="Lempel–Ziv–Oberhumer">LZO</a></li>
+<li><a href="/wiki/LZRW" title="LZRW">LZRW</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Stac" title="Lempel–Ziv–Stac">LZS</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski" title="Lempel–Ziv–Storer–Szymanski">LZSS</a></li>
+<li><a href="/w/index.php?title=Lempel%E2%80%93Ziv%E2%80%93Tamayo&amp;action=edit&amp;redlink=1" class="new" title="Lempel–Ziv–Tamayo (page does not exist)">LZT</a></li>
+<li><a href="/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch" title="Lempel–Ziv–Welch">LZW</a></li>
+<li><a href="/wiki/LZWL" title="LZWL">LZWL</a></li>
+<li><a href="/wiki/LZX_(algorithm)" title="LZX (algorithm)">LZX</a></li>
+<li><a href="/wiki/LZ4_(compression_algorithm)" title="LZ4 (compression algorithm)">LZ4</a></li>
+<li><a href="/w/index.php?title=Reduced_Offset_Lempel_Ziv&amp;action=edit&amp;redlink=1" class="new" title="Reduced Offset Lempel Ziv (page does not exist)">ROLZ</a></li>
+<li><a href="/wiki/Statistical_Lempel_Ziv" title="Statistical Lempel Ziv">Statistical Lempel Ziv</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">RLE</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Burrows%E2%80%93Wheeler_transform" title="Burrows–Wheeler transform">BWT</a></li>
+<li><a href="/wiki/Context_tree_weighting" title="Context tree weighting">CTW</a></li>
+<li><a href="/wiki/Delta_encoding" title="Delta encoding">Delta</a></li>
+<li><a href="/wiki/Dynamic_Markov_compression" title="Dynamic Markov compression">DMC</a></li>
+<li><a href="/wiki/Move-to-front_transform" title="Move-to-front transform">MTF</a></li>
+<li><a href="/wiki/Prediction_by_partial_matching" title="Prediction by partial matching">PPM</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Audio_compression_(data)" title="Audio compression (data)" class="mw-redirect">Audio</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Acoustics" title="Acoustics">Theory</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Companding" title="Companding">Companding</a></li>
+<li><a href="/wiki/Convolution" title="Convolution">Convolution</a></li>
+<li><a href="/wiki/Dynamic_range" title="Dynamic range">Dynamic range</a></li>
+<li><a href="/wiki/Latency_(audio)" title="Latency (audio)">Latency</a></li>
+<li><a href="/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" title="Nyquist–Shannon sampling theorem">Nyquist–Shannon theorem</a></li>
+<li><a href="/wiki/Sampling_(signal_processing)" title="Sampling (signal processing)">Sampling</a></li>
+<li><a href="/wiki/Sound_quality" title="Sound quality">Sound quality</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Audio_codec" title="Audio codec">Audio codec</a> parts</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/A-law_algorithm" title="A-law algorithm">A-law</a></li>
+<li><a href="/wiki/%CE%9C-law_algorithm" title="?-law algorithm">µ-law</a></li>
+<li><a href="/wiki/Algebraic_code-excited_linear_prediction" title="Algebraic code-excited linear prediction">ACELP</a></li>
+<li><a href="/wiki/Adaptive_differential_pulse-code_modulation" title="Adaptive differential pulse-code modulation">ADPCM</a></li>
+<li><a href="/wiki/Code-excited_linear_prediction" title="Code-excited linear prediction">CELP</a></li>
+<li><a href="/wiki/Differential_pulse-code_modulation" title="Differential pulse-code modulation">DPCM</a></li>
+<li><a href="/wiki/Fourier_transform" title="Fourier transform">Fourier transform</a></li>
+<li><a href="/wiki/Linear_predictive_coding" title="Linear predictive coding">LPC</a>
+<ul>
+<li><a href="/wiki/Log_area_ratio" title="Log area ratio">LAR</a></li>
+<li><a href="/wiki/Line_spectral_pairs" title="Line spectral pairs">LSP</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Modified_discrete_cosine_transform" title="Modified discrete cosine transform">MDCT</a></li>
+<li><a href="/wiki/Psychoacoustics" title="Psychoacoustics">Psychoacoustic model</a></li>
+<li><a href="/wiki/Warped_linear_predictive_coding" title="Warped linear predictive coding">WLPC</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Bit_rate" title="Bit rate">Bit rate</a>
+<ul>
+<li><a href="/wiki/Average_bitrate" title="Average bitrate">ABR</a></li>
+<li><a href="/wiki/Constant_bitrate" title="Constant bitrate">CBR</a></li>
+<li><a href="/wiki/Variable_bitrate" title="Variable bitrate">VBR</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Speech_coding" title="Speech coding">Speech coding</a></li>
+<li><a href="/wiki/Sub-band_coding" title="Sub-band coding">Sub-band coding</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Image_compression" title="Image compression">Image</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Terms</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Chroma_subsampling" title="Chroma subsampling">Chroma subsampling</a></li>
+<li><a href="/wiki/Color_space" title="Color space">Color space</a></li>
+<li><a href="/wiki/Compression_artifact" title="Compression artifact">Compression artifact</a></li>
+<li><a href="/wiki/Image_resolution" title="Image resolution">Image resolution</a></li>
+<li><a href="/wiki/Macroblock" title="Macroblock">Macroblock</a></li>
+<li><a href="/wiki/Pixel" title="Pixel">Pixel</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Methods</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Chain_code" title="Chain code">Chain code</a></li>
+<li><a href="/wiki/Discrete_cosine_transform" title="Discrete cosine transform">DCT</a></li>
+<li><a href="/wiki/Embedded_Zerotrees_of_Wavelet_transforms" title="Embedded Zerotrees of Wavelet transforms">EZW</a></li>
+<li><a href="/wiki/Fractal_compression" title="Fractal compression">Fractal</a></li>
+<li><a href="/wiki/Karhunen%E2%80%93Lo%C3%A8ve_theorem" title="Karhunen–Loève theorem">KLT</a></li>
+<li><a href="/wiki/Pyramid_(image_processing)" title="Pyramid (image processing)">LP</a></li>
+<li><a href="/wiki/Run-length_encoding" title="Run-length encoding">RLE</a></li>
+<li><a href="/wiki/Set_partitioning_in_hierarchical_trees" title="Set partitioning in hierarchical trees">SPIHT</a></li>
+<li><a href="/wiki/Wavelet_compression" title="Wavelet compression" class="mw-redirect">Wavelet</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Peak_signal-to-noise_ratio" title="Peak signal-to-noise ratio">PSNR quality measure</a></li>
+<li><a href="/wiki/Quantization_(image_processing)" title="Quantization (image processing)">Quantization</a></li>
+<li><a href="/wiki/Standard_test_image" title="Standard test image">Test images</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Video_compression" title="Video compression" class="mw-redirect">Video</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;">
+<div style="padding:0em 0.25em;"></div>
+<table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;">
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Terms</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Display_resolution" title="Display resolution">Display resolution</a></li>
+<li><a href="/wiki/Film_frame" title="Film frame">Frame</a></li>
+<li><a href="/wiki/Frame_rate" title="Frame rate">Frame rate</a></li>
+<li><a href="/wiki/Video_compression_picture_types" title="Video compression picture types">Frame types</a></li>
+<li><a href="/wiki/Interlaced_video" title="Interlaced video">Interlace</a></li>
+<li><a href="/wiki/Video#Characteristics_of_video_streams" title="Video">Video characteristics</a></li>
+<li><a href="/wiki/Video_quality" title="Video quality">Video quality</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;"><a href="/wiki/Video_codec" title="Video codec">Video codec parts</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Discrete_cosine_transform" title="Discrete cosine transform">DCT</a></li>
+<li><a href="/wiki/Deblocking_filter" title="Deblocking filter">Deblocking filter</a></li>
+<li><a href="/wiki/Motion_compensation" title="Motion compensation">Motion compensation</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group" style="width:11em;">Others</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;">
+<div style="padding:0em 0.25em;">
+<ul>
+<li><a href="/wiki/Bit_rate" title="Bit rate">Bit rate</a>
+<ul>
+<li><a href="/wiki/Average_bitrate" title="Average bitrate">ABR</a></li>
+<li><a href="/wiki/Constant_bitrate" title="Constant bitrate">CBR</a></li>
+<li><a href="/wiki/Variable_bitrate" title="Variable bitrate">VBR</a></li>
+</ul>
+</li>
+<li><a href="/wiki/List_of_codecs#Lossless_compression" title="List of codecs">Lossless compressed</a></li>
+<li><a href="/wiki/Uncompressed_video" title="Uncompressed video">Uncompressed</a></li>
+<li><a href="/wiki/Video_codec" title="Video codec">Video codecs</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>See <a href="/wiki/Template:Compression_formats" title="Template:Compression formats">Compression formats</a> for formats and <a href="/wiki/Template:Compression_software" title="Template:Compression software">Compression software</a> for codecs</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1063
+CPU time usage: 0.888 seconds
+Real time usage: 1.138 seconds
+Preprocessor visited node count: 1558/1000000
+Preprocessor generated node count: 6530/1500000
+Post-expand include size: 65052/2048000 bytes
+Template argument size: 514/2048000 bytes
+Highest expansion depth: 14/40
+Expensive parser function count: 3/500
+Lua time usage: 0.078s
+Lua memory usage: 2.08 MB
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:62545-0!0!0!!en!4!* and timestamp 20131226131114
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>								<div class="printfooter">
+				Retrieved from "<a href="http://en.wikipedia.org/w/index.php?title=Arithmetic_coding&amp;oldid=586462543">http://en.wikipedia.org/w/index.php?title=Arithmetic_coding&amp;oldid=586462543</a>"				</div>
+												<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Lossless_compression_algorithms" title="Category:Lossless compression algorithms">Lossless compression algorithms</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Use_dmy_dates_from_July_2013" title="Category:Use dmy dates from July 2013">Use dmy dates from July 2013</a></li><li><a href="/wiki/Category:Pages_containing_cite_templates_with_deprecated_parameters" title="Category:Pages containing cite templates with deprecated parameters">Pages containing cite templates with deprecated parameters</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+				<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+	<h3 id="p-personal-label">Personal tools</h3>
+	<ul>
+<li id="pt-createaccount"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Arithmetic+coding&amp;type=signup">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Arithmetic+coding" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>	</ul>
+</div>
+				<div id="left-navigation">
+					<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+	<h3 id="p-namespaces-label">Namespaces</h3>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Arithmetic_coding"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+					<li  id="ca-talk"><span><a href="/wiki/Talk:Arithmetic_coding"  title="Discussion about the content page [t]" accesskey="t">Talk</a></span></li>
+			</ul>
+</div>
+<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+	<h3 id="mw-vector-current-variant">
+		</h3>
+	<h3 id="p-variants-label"><span>Variants</span><a href="#"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+				</div>
+				<div id="right-navigation">
+					<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+	<h3 id="p-views-label">Views</h3>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="/wiki/Arithmetic_coding" >Read</a></span></li>
+					<li id="ca-edit"><span><a href="/w/index.php?title=Arithmetic_coding&amp;action=edit"  title="You can edit this page. &#10;Please review your changes before saving. [e]" accesskey="e">Edit</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Arithmetic_coding&amp;action=history"  title="Past versions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+	<h3 id="p-cactions-label"><span>Actions</span><a href="#"></a></h3>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+<div id="p-search" role="search">
+	<h3><label for="searchInput">Search</label></h3>
+	<form action="/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input name="search" placeholder="Search" title="Search Wikipedia [f]" accesskey="f" id="searchInput" />						<button type="submit" name="button" title="Search Wikipedia for this text" id="searchButton"><img src="//bits.wikimedia.org/static-1.23wmf7/skins/vector/images/search-ltr.png?303-4" alt="Search" width="12" height="13" /></button>								<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+				</div>
+			</div>
+			<div id="mw-panel">
+					<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+				<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+	<h3 id='p-navigation-label'>Navigation</h3>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+			<li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+			<li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+			<li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li>
+			<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+	<h3 id='p-interaction-label'>Interaction</h3>
+	<div class="body">
+		<ul>
+			<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+			<li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+			<li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+			<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+	<h3 id='p-tb-label'>Tools</h3>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Arithmetic_coding" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Arithmetic_coding" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li>
+			<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-permalink"><a href="/w/index.php?title=Arithmetic_coding&amp;oldid=586462543" title="Permanent link to this revision of the page">Permanent link</a></li>
+			<li id="t-info"><a href="/w/index.php?title=Arithmetic_coding&amp;action=info">Page information</a></li>
+			<li id="t-wikibase"><a href="//www.wikidata.org/wiki/Q2651" title="Link to connected data repository item [g]" accesskey="g">Data item</a></li>
+<li id="t-cite"><a href="/w/index.php?title=Special:Cite&amp;page=Arithmetic_coding&amp;id=586462543" title="Information on how to cite this page">Cite this page</a></li>		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+	<h3 id='p-coll-print_export-label'>Print/export</h3>
+	<div class="body">
+		<ul>
+			<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Arithmetic+coding">Create a book</a></li>
+			<li id="coll-download-as-rl"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Arithmetic+coding&amp;oldid=586462543&amp;writer=rl">Download as PDF</a></li>
+			<li id="t-print"><a href="/w/index.php?title=Arithmetic_coding&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+		</ul>
+	</div>
+</div>
+<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+	<h3 id='p-lang-label'>Languages</h3>
+	<div class="body">
+		<ul>
+			<li class="interlanguage-link interwiki-cs"><a href="//cs.wikipedia.org/wiki/Aritmetick%C3%A9_k%C3%B3dov%C3%A1n%C3%AD" title="Aritmetické kódování – Czech" lang="cs" hreflang="cs">Ceština</a></li>
+			<li class="interlanguage-link interwiki-de"><a href="//de.wikipedia.org/wiki/Arithmetisches_Kodieren" title="Arithmetisches Kodieren – German" lang="de" hreflang="de">Deutsch</a></li>
+			<li class="interlanguage-link interwiki-fr"><a href="//fr.wikipedia.org/wiki/Codage_arithm%C3%A9tique" title="Codage arithmétique – French" lang="fr" hreflang="fr">Français</a></li>
+			<li class="interlanguage-link interwiki-ko"><a href="//ko.wikipedia.org/wiki/%EC%82%B0%EC%88%A0_%EB%B6%80%ED%98%B8%ED%99%94" title="?? ??? – Korean" lang="ko" hreflang="ko">???</a></li>
+			<li class="interlanguage-link interwiki-it"><a href="//it.wikipedia.org/wiki/Codifica_aritmetica" title="Codifica aritmetica – Italian" lang="it" hreflang="it">Italiano</a></li>
+			<li class="interlanguage-link interwiki-nl"><a href="//nl.wikipedia.org/wiki/Aritmetische_codering" title="Aritmetische codering – Dutch" lang="nl" hreflang="nl">Nederlands</a></li>
+			<li class="interlanguage-link interwiki-ja"><a href="//ja.wikipedia.org/wiki/%E7%AE%97%E8%A1%93%E7%AC%A6%E5%8F%B7" title="???? – Japanese" lang="ja" hreflang="ja">???</a></li>
+			<li class="interlanguage-link interwiki-pl"><a href="//pl.wikipedia.org/wiki/Kodowanie_arytmetyczne" title="Kodowanie arytmetyczne – Polish" lang="pl" hreflang="pl">Polski</a></li>
+			<li class="interlanguage-link interwiki-pt"><a href="//pt.wikipedia.org/wiki/Codifica%C3%A7%C3%A3o_aritm%C3%A9tica" title="Codificação aritmética – Portuguese" lang="pt" hreflang="pt">Português</a></li>
+			<li class="interlanguage-link interwiki-ru"><a href="//ru.wikipedia.org/wiki/%D0%90%D1%80%D0%B8%D1%84%D0%BC%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BA%D0%BE%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5" title="?????????????? ??????????? – Russian" lang="ru" hreflang="ru">???????</a></li>
+			<li class="interlanguage-link interwiki-uk"><a href="//uk.wikipedia.org/wiki/%D0%90%D1%80%D0%B8%D1%84%D0%BC%D0%B5%D1%82%D0%B8%D1%87%D0%BD%D0%B5_%D0%BA%D0%BE%D0%B4%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F" title="??????????? ????????? – Ukrainian" lang="uk" hreflang="uk">??????????</a></li>
+			<li class="interlanguage-link interwiki-zh"><a href="//zh.wikipedia.org/wiki/%E7%AE%97%E6%9C%AF%E7%BC%96%E7%A0%81" title="???? – Chinese" lang="zh" hreflang="zh">??</a></li>
+			<li class="uls-p-lang-dummy"><a href="#"></a></li>
+			<li class="wbc-editpage"><a href="//www.wikidata.org/wiki/Q2651#sitelinks-wikipedia" title="Edit interlanguage links">Edit links</a></li>
+		</ul>
+	</div>
+</div>
+			</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 17 December 2013 at 08:09.<br /></li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy.</a> <br/>
+Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a class="external" href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/wiki/Arithmetic_coding" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="//wikimediafoundation.org/"><img src="//bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="//bits.wikimedia.org/static-1.23wmf7/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.cite","mobile.desktop","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","mw.MwEmbedSupport.style","ext.articleFeedbackv5.startup","ext.wikimediaEvents.moduleStorage","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","mw.PopUpMediaTransform","skins.vector.collapsibleNav"],null,true);
+}</script>
+<script src="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<!-- Served by mw1046 in 0.203 secs. -->
+	</body>
+</html>
