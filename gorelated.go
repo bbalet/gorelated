@@ -15,7 +15,7 @@ package main
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 import (
-	"bytes"
+	//"bytes"
 	"crypto/md5"
 	"flag"
 	"fmt"
@@ -155,17 +155,6 @@ func name2key(name string) string {
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
-// cleanHTML cleans the input text so as to make it suitable for a comparison :
-// - Replace all HTML tags <*> by space characters
-// - Simplify the content by removing duplicated spaces
-// NB: tolower is done by the Unicode/normalization
-func cleanHTML(content string) string {
-	result := content
-	result = remTags.ReplaceAllString(result, " ")
-	result = oneSpace.ReplaceAllString(result, " ")
-	return result
-}
-
 // visit is called by Walker, it adds the files found recursively
 // the files must match the pattern passed as a parameter of the application
 // We hash the content of each file
@@ -179,48 +168,12 @@ func visit(path string, f os.FileInfo, err error) error {
 			// Remove all HTML tags, simplify the content and calculate the hash
 			content = remTags.ReplaceAll(content, []byte(" "))
 			content = oneSpace.ReplaceAll(content, []byte(" "))
+			// NB: tolower is done by the Unicode/normalization
 			a := article{Key:name2key(path),
 						Path: path,
-						SimHash: simhash.Simhash(NewUnicodeWordFeatureSet(content, norm.NFKC))}
+						SimHash: simhash.Simhash(simhash.NewUnicodeWordFeatureSet(content, norm.NFKC))}
 			cache[a.Key] = a
 		}
 	}
 	return nil
 }
-
-/////////////////////////////////////////////////////////////
-// simhash patch for Unicode / normalization support
-// see : http://blog.golang.org/normalization
-// see : https://groups.google.com/forum/#!topic/golang-nuts/YyH1f_qCZVc
-
-// UnicodeWordFeatureSet is a feature set in which each word is a feature,
-// all equal weight.
-type UnicodeWordFeatureSet struct {
-	b []byte
-	f norm.Form
-}
-
-func NewUnicodeWordFeatureSet(b []byte, f norm.Form) *UnicodeWordFeatureSet {
-	fs := &UnicodeWordFeatureSet{b, f}
-	fs.normalize()
-	return fs
-}
-
-func (w *UnicodeWordFeatureSet) normalize() {
-	b := bytes.ToLower(w.f.Append(nil, w.b...))
-	w.b = b
-}
-
-var boundaries = regexp.MustCompile(`[\pL-_']+`)
-
-// Returns a []Feature representing each word in the byte slice
-func (w *UnicodeWordFeatureSet) GetFeatures() []simhash.Feature {
-	words := boundaries.FindAll(w.b, -1)
-	features := make([]simhash.Feature, len(words))
-	for i, w := range words {
-		features[i] = simhash.NewFeature(w)
-	}
-	return features
-}
-
-/////////////////////////////////////////////////////////////
