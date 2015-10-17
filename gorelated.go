@@ -171,7 +171,7 @@ func visit(path string, f os.FileInfo, err error) error {
 			// NB: tolower is done by the Unicode/normalization
 			a := article{Key: name2key(path),
 				Path:    path,
-				SimHash: simhash.Simhash(simhash.NewUnicodeWordFeatureSet([]byte(cleanContent), norm.NFKC))}
+				SimHash: simhash.Simhash(simhash.NewUnicodeWordFeatureSet([]byte(cleanContent), norm.NFC))}
 			cache[a.Key] = a
 		}
 	}
