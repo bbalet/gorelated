@@ -32,7 +32,8 @@ Please note that the result is a fast **approximation** based on similarities be
 
 ### 2. Create a Jekyll plugin
 
-This example of Jekyll plugin will perform the following tasks :
+This example of Jekyll plugin will perform the following tasks:
+
 1. Extract the list of your posts and their path.
 2. Execute the *gorelated* program with the list of your posts and wait until it exits
 3. *gorelated* will create a JSON file into your `_data` folder for a later use.
