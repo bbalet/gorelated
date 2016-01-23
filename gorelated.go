@@ -1,7 +1,7 @@
 package main
 
 /*  gorelated finds the list of related text files from a folder
-	Copyright (C) 2013 Benjamin BALET
+	  Copyright (C) 2013 Benjamin BALET
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@ package main
     along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 
 import (
+	"bytes"
 	"crypto/md5"
 	"flag"
 	"fmt"
@@ -29,10 +30,11 @@ import (
 	"sort"
 	"time"
 
+	"encoding/csv"
+	"encoding/json"
+
 	"github.com/bbalet/stopwords"
 	"github.com/kardianos/osext"
-	"github.com/mfonda/simhash"
-	"golang.org/x/text/unicode/norm"
 )
 
 // Definitions used by sort package
@@ -50,11 +52,24 @@ func (a articleList) Less(i, j int) bool {
 
 // An article
 type article struct {
-	Key     string      //MD5 hash of its path
-	Path    string      //Article full path
-	SimHash uint64      //Hash representing the content
-	Score   uint8       //Distance to another article
-	Related articleList //List of related articles sorted out by their scores
+	Key     		string      //MD5 hash of its path
+	Path    		string      //Article full path
+	URL					string			//If we parse a Jekyll list of posts, export the URL
+	Title 			string			//If we parse a Jekyll list of posts, export the Title
+	Description	string			//If we parse a Jekyll list of posts, export the Description
+	Thumbnail	  string			//If we parse a Jekyll list of posts, export the Thumbnail
+	SimHash 		uint64      //Hash representing the content
+	Score   		uint8       //Distance to another article
+	Related 		articleList //List of related articles sorted out by their scores
+}
+
+// A Jekyll Post
+type post struct {
+	URL					string			//If we parse a Jekyll list of posts, export the URL
+	Title 			string			//If we parse a Jekyll list of posts, export the Title
+	Description	string			//If we parse a Jekyll list of posts, export the Description
+	Thumbnail	  string			//If we parse a Jekyll list of posts, export the Thumbnail
+	Related 		[]post		  //List of related articles sorted out by their scores
 }
 
 var (
@@ -63,6 +78,9 @@ var (
 	extensions = flag.String("extensions", ".*\\.html", "Regexp matching files to be added to the list")
 	length     = flag.Int("length", 5, "Number of related files to be displayed")
 	langCode   = flag.String("lang", "en", "ISO 639-1 language code of the content")
+	jekyll     = flag.String("jekyll", "", "Path to the list of posts")
+	//Location of executable
+	exePath string
 	// Global vars
 	extRule *regexp.Regexp
 	// Working directory
@@ -71,13 +89,99 @@ var (
 	cache map[string]article
 )
 
-// Proof of concept demonstrating how to compute a list of related posts
+// gorealated is a prototype showing how to build a list of related articles
+// for a static website generator such as higo or Jekyll
 func main() {
-
-	start := time.Now()
 	flag.Parse()
-	exePath, _ := osext.ExecutableFolder()
+	exePath, _ = osext.ExecutableFolder()
+  cache = make(map[string]article)
+	if *jekyll=="" {
+		protoSimHash()
+	} else {
+		parseJekyllList()
+	}
+}
 
+// parseJekyllList builds a list of related posts
+func parseJekyllList() {
+	start := time.Now()
+	log.Println("Analyzing a list of Jekyll posts...")
+
+	// open input file
+	fi, err := os.Open(*jekyll)
+	if err != nil {
+			panic(err)
+	}
+	defer func() {
+			if err := fi.Close(); err != nil {
+					panic(err)
+			}
+	}()
+	r := csv.NewReader(fi)
+
+	for {
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		content, err := ioutil.ReadFile(record[1])
+		if err != nil {
+			log.Fatal("I Can't read this file : ", record[1])
+		}
+		a := article{Key:name2key(record[1]),
+			 Path:record[1],	SimHash:stopwords.Simhash(content, *langCode, true),
+			 URL:record[0],
+			 Title: record[2],
+			 Description: record[3],
+		   Thumbnail: record[4]}
+		cache[a.Key] = a
+	}
+	//Sort the list of articles
+	compareFiles()
+
+	//Create a collection of posts easily usable with Jekyll Liquid tags
+	var jekyllPosts []post
+	for _, articlePost := range cache {
+			aPost := post {URL:articlePost.URL,Title:articlePost.Title,
+				Description:articlePost.Description,
+				Thumbnail:articlePost.Thumbnail}
+			for _, articleRelated := range articlePost.Related {
+					aRelatedPost := post {URL:articleRelated.URL,Title:articleRelated.Title,
+						Description:articleRelated.Description,
+						Thumbnail:articleRelated.Thumbnail}
+					aPost.Related = append(aPost.Related, aRelatedPost)
+			}
+			jekyllPosts = append(jekyllPosts, aPost)
+	}
+
+	b, err := json.Marshal(jekyllPosts)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var out bytes.Buffer
+	json.Indent(&out, b, "", "\t")
+
+	// open output file
+	fo, err := os.Create(filepath.Join(exePath, "posts.json"))
+	if err != nil {
+			panic(err)
+	}
+	defer func() {
+			if err := fo.Close(); err != nil {
+					panic(err)
+			}
+	}()
+	out.WriteTo(fo)
+	log.Println("Total time : ", time.Since(start))
+}
+
+// protoSimHash prints a list of related posts
+// Proof of concept demonstrating how to compute a list of related posts
+func protoSimHash() {
+	start := time.Now()
 	//Check if input folder exists
 	if !filepath.IsAbs(*input) {
 		inPath = filepath.Join(exePath, *input)
@@ -90,7 +194,6 @@ func main() {
 
 	//Recursively Browse a folder to find all files
 	log.Println("Reading and analyzing all input files...")
-	cache = make(map[string]article)
 	extRule = regexp.MustCompile(*extensions)
 	err := filepath.Walk(inPath, visit)
 	if err != nil {
@@ -112,6 +215,7 @@ func main() {
 	}
 }
 
+
 // getRelatedPosts gets the list of the {numberPosts} related posts
 func getRelatedPosts(filePath string, numberPosts int) articleList {
 	if numberPosts >= len(cache) {
@@ -122,20 +226,26 @@ func getRelatedPosts(filePath string, numberPosts int) articleList {
 
 // compareFiles :
 //  - Opens a file and compare it to all the other files
-//	- The comparaison is the Levenshtein Distance with the other files' content
+//	- The comparaison is the Hamming Distance with the other files' content (using SimHash algo)
 //	- Sorts the files by these scores (the lower the score is, the more related the content is)
 //  - Stores the list of compared articles with their LD scores into a JSON file
 func compareFiles() {
 	start := time.Now()
 	for baseKey, _ := range cache {
 		var listOfArticles articleList
+		var max int
 		for k, v := range cache {
-			if k != baseKey {
+			if k != baseKey && max<*length {
 				r := article{Key: v.Key,
-					Path: v.Path,
-					Score: simhash.Compare(cache[baseKey].SimHash,
-						cache[k].SimHash)}
+					Path:					v.Path,
+					URL:					v.URL,
+					Title: 				v.Title,
+					Description:	v.Description,
+					Thumbnail:		v.Thumbnail,
+					SimHash: 			v.SimHash,
+					Score: 				stopwords.CompareSimhash(cache[baseKey].SimHash,cache[k].SimHash)}
 				listOfArticles = append(listOfArticles, r)
+				max++
 			}
 		}
 
@@ -167,11 +277,7 @@ func visit(path string, f os.FileInfo, err error) error {
 				log.Fatal("I Can't read this file : ", path)
 			}
 			// Remove all HTML tags, simplify the content and calculate the hash
-			cleanContent := stopwords.CleanContent(string(content), *langCode, true)
-			// NB: tolower is done by the Unicode/normalization
-			a := article{Key: name2key(path),
-				Path:    path,
-				SimHash: simhash.Simhash(simhash.NewUnicodeWordFeatureSet([]byte(cleanContent), norm.NFC))}
+			a := article{Key:name2key(path), Path:path,	SimHash:stopwords.Simhash(content, *langCode, true)}
 			cache[a.Key] = a
 		}
 	}
