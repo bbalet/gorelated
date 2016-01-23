@@ -1,8 +1,9 @@
 # What is gorelated ?
 
-*gorelated* is a prototype demonstrating how to build a list of related posts in a static website generator written in go.
-It relies on SIMHash algorithm, so the objective is to quickly build an approximate list and not to aim an exact lexical match.
+*gorelated* is a prototype demonstrating how to build a list of related posts in a static website generator.
+It relies on SIMHash algorithm, so the objective is to quickly build an approximate list and not to be as accurate as a manual curation.
 In order to improve the accuracy, we apply the following process for each file:
+
 1. Remove HTML tags.
 2. Decode HTML entities if any.
 3. Remove stop words (the most frequent words are useless for the meaning of the text).
@@ -12,6 +13,8 @@ And then, we can sort the list of related content by computing the distance betw
 
 *gorelated* comes with various HTML files coming from Wikipedia or the public domain.
 You'll notice that you can improve the accuracy if you run the algorithm with the content only and not the entire HTML page.
+
+Please note that the result is a fast **approximation** based on similarities between contents (weight of words), this algorithm doesn't examine grammar, syntax or lexical fields.
 
 # Usage
 
@@ -53,6 +56,8 @@ This example of Jekyll plugin will perform the following tasks :
         end
       end
     end
+
+Feel free to change paths, source and target but if you want to use the JSON file with Liquid tags, it must be created into the `_data` folder.
 
 ### 3. Use the list of related articles with Liquid tags
 
