@@ -38,6 +38,7 @@ This example of Jekyll plugin will perform the following tasks:
 2. Execute the *gorelated* program with the list of your posts and wait until it exits
 3. *gorelated* will create a JSON file into your `_data` folder for a later use.
 
+
     module Reading
       class Generator < Jekyll::Generator
         def generate(site)
