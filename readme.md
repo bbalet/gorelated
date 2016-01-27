@@ -42,20 +42,28 @@ Jekyll Module:
 
     module Reading
       class Generator < Jekyll::Generator
+        require 'csv' 
+        
         def generate(site)
-          #Prepare a list of posts that will be processed by the Go program
-          url  = Jekyll.configuration({})['url']
-          listPath = File.join(site.source, '_data', 'posts.txt')
-          file = File.new(listPath, "w")
-          site.posts.each do |post|
-            if post.data['published']
-              file.write(url + post.url + "," + post.path  + ",\"" + post.data['title'] + "\",\"" + post.data['description'] + " \"," + post.data['thumbnail'] + "\n")
+          # Prepare a list of posts that will be processed by the Go program
+          url  = site.config['url']
+          listPath = site.in_source_dir('_data', 'posts.txt')
+          CSV.open(listPath, "wb") do |csv|
+            site.posts.each do |post|
+              if site.publisher.publish? post
+                csv << [
+                  url + post.url,
+                  post.path,
+                  post.to_liquid['title'],
+                  post.to_liquid['description'],
+                  post.to_liquid['thumbnail']
+                ]
+              end
             end
           end
-          file.close
-          #Call the Go program that will process the list and generate a JSON file
-          exePath = File.join(site.source, '_data', 'gorelated')
-          system exePath + " -jekyll \"" + listPath + "\""
+          # Call the Go program that will process the list and generate a JSON file
+          exePath = site.in_source_dir('_data', 'gorelated')
+          system exePath, "-jekyll", listPath
         end
       end
     end
@@ -81,7 +89,7 @@ From this point, the JSON file can be used by Liquid tags, for example:
       {% endfor %}
     </div>
 
-# Dependancies
+# Dependencies
 
 * https://github.com/bbalet/stopwords Libray cleaning the stop words, HTML tags and duplicated spaces in a content
 * https://github.com/kardianos/osext get the folder where the executable is installed (not running)
