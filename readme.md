@@ -54,9 +54,9 @@ Jekyll Module:
                 csv << [
                   url + post.url,
                   post.path,
-                  "\"#{post.data['title']}\"",
-                  "\"#{post.data['description']}\"",
-                  post.data['thumbnail']
+                  post.to_liquid['title'],
+                  post.to_liquid['description'],
+                  post.to_liquid['thumbnail']
                 ]
               end
             end
